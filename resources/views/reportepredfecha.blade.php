@@ -21,6 +21,7 @@
         <a href="{{ route('reporte1.pdf') }}" class="btn btn-sm btn-primary btndiag">
                 Descargar reporte en PDF
         </a>
+        
     </center>
     <br>
 
