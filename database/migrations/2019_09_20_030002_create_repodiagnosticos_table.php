@@ -42,7 +42,7 @@ class CreateRepodiagnosticosTable extends Migration
 
         });
 
-        Excel::import(new RepoImport, 'basedata.basedata.csv');
+        // Excel::import(new RepoImport, 'basedata.basedata.csv');
 
     }
 
