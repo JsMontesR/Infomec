@@ -61,7 +61,7 @@ class ReportesController extends Controller
         }elseif(!strcmp($tipo,"Cantidad de predicciones hechas por usuario")){
           return DB::table('registropredicciones')->join('users','idUsuario','=','users.id')
                     ->select(DB::raw('users.id as Id'),DB::raw('users.name as Usuario'),DB::raw('COUNT(*) AS "Cantidad de consultas realizada"'),DB::raw('round(100*COUNT(*)/(SELECT COUNT(*) FROM registropredicciones),1) AS "Porcentaje de predicciones %"'))
-                    ->groupBy(DB::raw('users.id'))
+                    ->groupBy(DB::raw('users.id','users.name'))
                     ->get(); 
         }else if(strcmp($tipo,"Cantidad de predicciones hechas por usuario")){
 
