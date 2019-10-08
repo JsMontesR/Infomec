@@ -15,7 +15,7 @@ class ReportesController extends Controller
      */
     public function index()
     {
-        return view('reportes',compact('reportes'));
+        return view('reportes');
     }
 
     public function prediccionesFecha(){
