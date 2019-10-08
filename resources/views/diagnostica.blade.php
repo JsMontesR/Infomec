@@ -6,12 +6,12 @@
         <div class="col-md">
         	<div class="card">
         		<div class="card-header">
-        			<h2 align="center">Realiza tu diagnóstico</h2>
+        			<h2 align="center">Diagnóstico de equipos de escritorio</h2>
         		</div>
      
              	@if(!session()->has('predict'))
         			<br>
-		            <h3 class="txtadvisor">Responda el siguiente cuestionario y haga click en el botón haz tu diagnóstico para averiguar que problemas puede tener el equipo.</h3>
+		            <h3 class="txtadvisor">Responda el siguiente cuestionario para averiguar que problemas puede tener el equipo de mesa.</h3>
 
 		         @endif
 	             	<div class="card-body">
