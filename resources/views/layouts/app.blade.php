@@ -31,7 +31,9 @@
     <a class="navbar-brand mr-1" href="{{route('home')}}">Infomec</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      @auth
       <i class="fas fa-bars"></i>
+      @endauth
     </button>
 
     <!-- Navbar Search -->
@@ -81,7 +83,7 @@
 
   <div id="wrapper">
 
-    <!-- Sidebar -->
+    @auth
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="{{route('home')}}">
@@ -89,16 +91,20 @@
           <span>Panel de control</span>
         </a>
       </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{{route('diagnostica')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Haga su diagnóstico</span></a>
       </li>
+      @if(auth()->user()->tipo === 'a')
       <li class="nav-item">
         <a class="nav-link" href="{{route('reportes')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Informes</span></a>
       </li>
+      @endif
+      @endauth
     </ul>
 
     <div id="content-wrapper">
