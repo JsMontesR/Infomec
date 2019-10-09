@@ -30,11 +30,13 @@
 
     <a class="navbar-brand mr-1" href="{{route('home')}}">Infomec</a>
 
+    @auth
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      @auth
+      
       <i class="fas fa-bars"></i>
-      @endauth
+     
     </button>
+    @endauth
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -49,8 +51,8 @@
 
       <!-- Authentication Links -->
         @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <li class="nav-item dropdown-menu-right">
+                <a class="nav-link"  href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
             @if (Route::has('register'))
                 <li class="nav-item">
@@ -115,7 +117,7 @@
 
       </div>
       <!-- /.container-fluid -->
-
+      @auth
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
         <div class="container my-auto">
@@ -124,6 +126,8 @@
           </div>
         </div>
       </footer>
+
+      @endauth
 
     </div>
     <!-- /.content-wrapper -->
