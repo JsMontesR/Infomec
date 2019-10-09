@@ -33,7 +33,6 @@ class DiagnosticaController extends Controller
     {
         $diagnostica = DB::table('diccionario')->get();
         return view('diagnostica',compact('diagnostica'));
-        
     }
 
     /**
