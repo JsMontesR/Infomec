@@ -12,7 +12,6 @@
              	@if(!session()->has('predict'))
         			<br>
 		            <h3 class="txtadvisor">Responda el siguiente cuestionario para averiguar que problemas puede tener el equipo de mesa.</h3>
-
 		         @endif
 	             	<div class="card-body">
 
