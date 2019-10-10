@@ -54,7 +54,6 @@
 								</center>
 								
 		                    </form>
-
 		                  
 	             </div>
 	            
