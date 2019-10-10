@@ -52,6 +52,7 @@
 									<br>
 								<button class="btndiag">Haga su diagnóstico</button> 
 								</center>
+								
 		                    </form>
 
 		                  
