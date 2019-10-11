@@ -19,11 +19,18 @@ class ReportesController extends Controller
         $this->middleware('checkadmin');
     }
 
+
+
+
     public function index()
     {   
         
         return view('reportes');
     }
+
+
+
+
 
     public function prediccionesFecha(){
 
@@ -37,6 +44,25 @@ class ReportesController extends Controller
 
          return view('reporteusuarios',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte]);
     }
+
+    public function prediccionesFallaSoft(){
+        $nombrereporte = "Daños de software más frecuentes";
+
+         return view('reportepredsoft',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte]);
+    }
+
+    public function prediccionesFallaHard(){
+        $nombrereporte = "Daños de hardware más frecuentes";
+
+         return view('reportepredhard',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte]);
+    }
+
+
+
+    /*
+    *    Generación de PDFs
+    */
+
 
     public function prediccionesFechaPdf()
     {
@@ -57,6 +83,31 @@ class ReportesController extends Controller
             return $pdf->download('reporte.pdf');
     }
 
+    public function prediccionesFallaSoftPdf(){
+
+            $nombrereporte = "Daños de software más frecuentes";
+            $registros = $this->consultar($nombrereporte);
+
+            $pdf = \PDF::loadView('pdf.reporte',compact('registros','nombrereporte'));
+            return $pdf->download('reporte.pdf');
+    }
+
+    public function prediccionesFallaHardPdf(){
+
+            $nombrereporte = "Daños de hardware más frecuentes";
+            $registros = $this->consultar($nombrereporte);
+
+            $pdf = \PDF::loadView('pdf.reporte',compact('registros','nombrereporte'));
+            return $pdf->download('reporte.pdf');
+    }
+
+
+
+
+
+
+
+
      public function consultar($tipo){
 
         if(!strcmp($tipo,"Cantidad de predicciones hechas por mes")){
@@ -66,13 +117,19 @@ class ReportesController extends Controller
                     ->get();
 
         }elseif(!strcmp($tipo,"Cantidad de predicciones hechas por usuario")){
+
           return DB::table('registropredicciones')->join('users','idUsuario','=','users.id')
                     ->select(DB::raw('users.id as Id'),DB::raw('users.name as Usuario'),DB::raw('COUNT(*) AS "Cantidad de consultas realizada"'),DB::raw('round(100*COUNT(*)/(SELECT COUNT(*) FROM registropredicciones),1) AS "Porcentaje de predicciones %"'))
                     ->groupBy(DB::raw('users.id'),DB::raw('users.name'))
                     ->get(); 
-        }else if(strcmp($tipo,"Cantidad de predicciones hechas por usuario")){
 
+        }else if(!strcmp($tipo,"Daños de software más frecuentes")){
 
+            return DB::table('registropredicciones')->select(DB::raw('registropredicciones.fallasoft AS "Falla de software"'),DB::raw('COUNT(*) AS "Frecuencia"'))->groupBy(DB::raw('registropredicciones.fallasoft'))->get();
+
+        }else if(!strcmp($tipo,"Daños de hardware más frecuentes")){
+
+            return DB::table('registropredicciones')->select(DB::raw('registropredicciones.fallahard AS "Falla de hardware"'),DB::raw('COUNT(*) AS "Frecuencia"'))->groupBy(DB::raw('registropredicciones.fallahard'))->get();
         }
 
     }

@@ -18,7 +18,7 @@
     </div>
  --}}
     <center>
-        <a href="{{ route('reportepredfecha.pdf') }}" class="btn btn-sm btn-primary btndiag">
+        <a href="{{ route('reportfallahard.pdf') }}" class="btn btn-sm btn-primary btndiag">
                 Descargar reporte en PDF
         </a>
         

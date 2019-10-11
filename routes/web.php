@@ -23,14 +23,26 @@ Route::get('/index', 'HomeController@index')->name('home');
 
 Route::post('diagnostica', 'DiagnosticaController@predict')->name('diagnostica.predict');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('/reportes', 'ReportesController@index')->name('reportes');
+
+
 
 Route::get('/reportepredfecha', 'ReportesController@prediccionesFecha')->name('reportepredfecha');
 
 Route::get('/reportusuarios', 'ReportesController@prediccionesUsuario')->name('reportusuarios');
 
-Route::get('/reporte1', 'ReportesController@prediccionesFechaPdf')->name('reporte1.pdf');
+Route::get('/reportfallasoft', 'ReportesController@prediccionesFallaSoft')->name('reportfallasoft');
 
-Route::get('/reporte2', 'ReportesController@prediccionesUsuarioPdf')->name('reporte2.pdf');
+Route::get('/reportfallahard', 'ReportesController@prediccionesFallaHard')->name('reportfallahard');
+
+
+
+Route::get('/reportepredfecha.pdf', 'ReportesController@prediccionesFechaPdf')->name('reportepredfecha.pdf');
+
+Route::get('/reportusuarios.pdf', 'ReportesController@prediccionesUsuarioPdf')->name('reportusuarios.pdf');
+
+Route::get('/reportfallasoft.pdf', 'ReportesController@prediccionesFallaSoftPdf')->name('reportfallasoft.pdf');
+
+Route::get('/reportfallahard,pdf', 'ReportesController@prediccionesFallaHardPdf')->name('reportfallahard.pdf');

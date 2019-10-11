@@ -121,13 +121,14 @@ class DiagnosticaController extends Controller
 
         //Retornar la predicción
 
-        $respuesta = "Desde el punto de vista del hardware el posible daño detectado es: "  . $prediction1 . ", y desde el punto de vista del software el posible daño detectado es: " . $prediction2 .".";
+        $respuesta = "Desde el punto de vista del hardware el posible daño detectado es: "  . $prediction1[0] . ", y desde el punto de vista del software el posible daño detectado es: " . $prediction2[1] .".";
 
         //Se guarda la predicción el la BD
 
-        $this->recordPrediction($sampleoriginal,$prediction1,$prediction2);
+        $this->recordPrediction($sampleoriginal,$prediction1[1],$prediction2[1]);
+
+
         session()->flash('predict', $respuesta);
-        // back()->with('predict', $respuesta)
         return redirect()->back();
     }
 
@@ -147,7 +148,8 @@ class DiagnosticaController extends Controller
         $classifier = new NaiveBayes();
         $classifier->train($split->getTrainSamples(),$split->getTrainLabels());
         $precision =Accuracy::score($split->getTestLabels(),$classifier->predict($split->getTestSamples())); 
-        return $classifier->predict($sample) . ' con una precisión del '. round($precision*100,2) . '%'  ;
+        $prediction = $classifier->predict($sample);
+        return [$prediction . ' con una precisión del '. round($precision*100,2) . '%', $prediction]  ;
     }
 
     /**

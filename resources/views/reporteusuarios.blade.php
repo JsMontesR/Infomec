@@ -7,7 +7,7 @@
 @if(!$registros->isEmpty())
 
     <center>
-        <a href="{{ route('reporte2.pdf') }}" class="btn btn-sm btn-primary btndiag">
+        <a href="{{ route('reportusuarios.pdf') }}" class="btn btn-sm btn-primary btndiag">
                 Descargar reporte en PDF
         </a>
     </center>
