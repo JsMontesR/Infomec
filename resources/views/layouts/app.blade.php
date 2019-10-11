@@ -11,6 +11,8 @@
 
   <title>Infomec</title>
 
+  <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+
   <!-- Custom fonts for this template -->
   <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
@@ -38,20 +40,13 @@
     </button>
     @endauth
 
-    <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-        
-      </div>
-    </form>
-
     <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0  ">
+    <ul class="navbar-nav ml-auto ml-md-0">
       
 
       <!-- Authentication Links -->
         @guest
-            <li class="nav-item">
+            <li class="nav-item no-arrow mx-1 ">
                 <a class="nav-link"  href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
             @if (Route::has('register'))
@@ -60,7 +55,7 @@
                 </li>
             @endif
         @else
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown no-arrow mx-1">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
@@ -151,15 +146,13 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
-  <script src="{{asset('vendor/datatables/jquery.dataTables.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendor/datatables/jquery.dataTables.js')}}"></script>
   <script src="{{asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('js/sb-admin.min.js')}}"></script>
 
   <!-- Demo scripts for this page-->
-  <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
-  <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
 
 </body>
 
