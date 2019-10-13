@@ -121,7 +121,7 @@ class DiagnosticaController extends Controller
 
         //Retornar la predicción
 
-        $respuesta = "Desde el punto de vista del hardware el posible daño detectado es: "  . $prediction1[0] . ", y desde el punto de vista del software el posible daño detectado es: " . $prediction2[1] .".";
+        $respuesta = "Desde el punto de vista del hardware el posible daño detectado es: "  . $prediction1[0] . ", y desde el punto de vista del software el posible daño detectado es: " . $prediction2[0] .".";
 
         //Se guarda la predicción el la BD
 
