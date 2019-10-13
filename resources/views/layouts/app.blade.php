@@ -61,11 +61,18 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                    <a class="dropdown-item" href="{{ route('perfil') }}">
+                        {{ __('My profile') }}
+                    </a>
+
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
+
+
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
@@ -94,7 +101,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Haga su diagnóstico</span></a>
       </li>
-      @if(auth()->user()->tipo === 'a')
+      @if(auth()->user()->rol === 'administrador')
       <li class="nav-item">
         <a class="nav-link" href="{{route('reportes')}}">
           <i class="fas fa-fw fa-table"></i>

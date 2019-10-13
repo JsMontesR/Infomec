@@ -16,7 +16,7 @@ class CheckAdminRole
     public function handle($request, Closure $next)
     {
 
-        if (auth()->user()->tipo === 'a') {
+        if (auth()->user()->rol === 'administrador') {
             return $next($request);
         }
         return redirect('/');

@@ -35,26 +35,30 @@ class ReportesController extends Controller
     public function prediccionesFecha(){
 
         $nombrereporte = "Cantidad de predicciones hechas por mes";
+        $rutapdf = 'reportepredfecha.pdf';
 
-         return view('reportepredfecha',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte]);
+         return view('reporteweb',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte, "rutapdf" => $rutapdf]);
     }
 
     public function prediccionesUsuario(){
         $nombrereporte = "Cantidad de predicciones hechas por usuario";
+        $rutapdf = 'reportusuarios.pdf';
 
-         return view('reporteusuarios',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte]);
+         return view('reporteweb',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte, "rutapdf" => $rutapdf]);
     }
 
     public function prediccionesFallaSoft(){
         $nombrereporte = "Daños de software más frecuentes";
+        $rutapdf = 'reportfallasoft.pdf';
 
-         return view('reportepredsoft',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte]);
+         return view('reporteweb',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte, "rutapdf" => $rutapdf]);
     }
 
     public function prediccionesFallaHard(){
         $nombrereporte = "Daños de hardware más frecuentes";
+        $rutapdf = 'reportfallahard.pdf';
 
-         return view('reportepredhard',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte]);
+         return view('reporteweb',["registros" => $this->consultar($nombrereporte), "nombrereporte" => $nombrereporte, "rutapdf" => $rutapdf]);
     }
 
 
@@ -112,8 +116,8 @@ class ReportesController extends Controller
 
         if(!strcmp($tipo,"Cantidad de predicciones hechas por mes")){
          return DB::table('registropredicciones')
-                    ->select(DB::raw('DATE_FORMAT(created_at,"%M %Y") as Mes'),DB::raw('COUNT(*) as "Cantidad de predicciones"'))
-                    ->groupBy(DB::raw('DATE_FORMAT(created_at,"%M %Y")'))
+                    ->select(DB::raw('DATE_FORMAT(created_at,"%m/%Y") as Mes'),DB::raw('COUNT(*) as "Cantidad de predicciones"'))
+                    ->groupBy(DB::raw('DATE_FORMAT(created_at,"%m/%Y")'))
                     ->get();
 
         }elseif(!strcmp($tipo,"Cantidad de predicciones hechas por usuario")){

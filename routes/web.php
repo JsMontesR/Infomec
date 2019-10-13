@@ -21,11 +21,16 @@ Route::get('/diagnostica', 'DiagnosticaController@index')->name('diagnostica');
 
 Route::get('/index', 'HomeController@index')->name('home');
 
-Route::post('diagnostica', 'DiagnosticaController@predict')->name('diagnostica.predict');
-
-
+Route::post('/diagnostica', 'DiagnosticaController@predict')->name('diagnostica.predict');
 
 Route::get('/reportes', 'ReportesController@index')->name('reportes');
+
+
+Route::get('/perfil','ConfigUserController@index')->name('perfil');
+
+Route::post('/actualizarUsuario/','ConfigUserController@update')->name('perfil.update');
+
+
 
 
 
