@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 
 class ConfigUserController extends Controller
 {
 
+    use AuthenticatesUsers;
 
      /**
      * Create a new controller instance.
@@ -95,7 +98,12 @@ class ConfigUserController extends Controller
         $ans = "Cambios";
 
         if($request->oldpass != null){
-            
+
+
+            if(!Hash::check($request->oldpass,$usuario->password)){
+                throw ValidationException::withMessages(['oldpass' => 'Contraseña incorrecta',]);
+            }
+
             $request->validate([
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ]);

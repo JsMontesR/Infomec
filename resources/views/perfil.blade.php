@@ -53,7 +53,7 @@
                                                     <div class="col-md-8">
                                                         <input id="oldpass" type="password" class="form-control @error('oldpass') is-invalid @enderror" name="oldpass">
 
-                                                        @error('password')
+                                                        @error('oldpass')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
