@@ -35,7 +35,7 @@
     @auth
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       
-      <i class="fas fa-bars"></i>
+      <em class="fas fa-bars"></em>
      
     </button>
     @endauth
@@ -91,20 +91,20 @@
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="{{route('home')}}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <em class="fas fa-fw fa-tachometer-alt"></em>
           <span>Panel de control</span>
         </a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="{{route('diagnostica')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <em class="fas fa-fw fa-chart-area"></em>
           <span>Haga su diagnóstico</span></a>
       </li>
       @if(auth()->user()->rol === 'administrador')
       <li class="nav-item">
         <a class="nav-link" href="{{route('reportes')}}">
-          <i class="fas fa-fw fa-table"></i>
+          <em class="fas fa-fw fa-table"></em>
           <span>Informes</span></a>
       </li>
       @endif
@@ -139,7 +139,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <em class="fas fa-angle-up"></em>
   </a>
 
   

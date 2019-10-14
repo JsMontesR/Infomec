@@ -27,10 +27,10 @@
 
 		                    
 		                    @if(session()->has('predict'))
-		                    <center>
+		                    <div align="center">
 		                    	<h3 class="row justify-content-center">{{session('predict')}}</h3>
 		                    	<label class="row justify-content-center">Nota: El sistema de predicciones arroja resultados meramente tentativos, no son completamente fiables y no reemplazan el criterio de un profesional especializado en el área.</label>
-		                    </center>  
+		                    </div>  
 		                    <br>
   							@endif
 
@@ -48,10 +48,10 @@
 								
 								@endforeach
 
-								<center>
+								<div align="center">
 									<br>
 								<button class="btndiag">Haga su diagnóstico</button> 
-								</center>
+								</div>
 								
 		                    </form>
 		                  
