@@ -115,6 +115,7 @@ class ReportesController extends Controller
      public function consultar($tipo){
 
         if(!strcmp($tipo,"Cantidad de predicciones hechas por mes")){
+            
          return DB::table('registropredicciones')
                     ->select(DB::raw('DATE_FORMAT(created_at,"%m/%Y") as Mes'),DB::raw('COUNT(*) as "Cantidad de predicciones"'))
                     ->groupBy(DB::raw('DATE_FORMAT(created_at,"%m/%Y")'))
