@@ -9,7 +9,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Infomec - Inicar sesión</title>
+  <title>Infomec - Iniciar sesión</title>
+
+
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -20,7 +22,6 @@
 </head>
 
 <body class="bg-dark">
-
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">{{ __('Login') }}</div>
@@ -78,6 +79,8 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
+
                             </div>
                         </div>
         </form>
