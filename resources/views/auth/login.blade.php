@@ -2,7 +2,6 @@
 
 @section('content')
 
-<h1>Holita</h1>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
