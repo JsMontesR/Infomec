@@ -48,7 +48,7 @@
                 </div>
                 <div class="mr-5">Equipos</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="{{ route('equipos') }}">
                 <span class="float-left">Ver equipos</span>
                 <span class="float-right">
                   <em class="fas fa-angle-right"></em>

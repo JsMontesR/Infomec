@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class CreateUsersTable extends Migration
@@ -25,6 +26,13 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        User::create([
+            'id' => 0,
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'rol' => 'administrador',
+            'password' => Hash::make('1234')
+        ]);
     }
 
     /**

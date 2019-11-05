@@ -15,10 +15,10 @@ class CreateServiciosTable extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->date('fechaIngreso');
             $table->string('problemaReportado');
             $table->string('notas');
+            $table->timestamps();
         });
     }
 
