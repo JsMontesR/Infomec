@@ -12,15 +12,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md">
-            <div class="card">
-                <div class="card-header">Detalle equipos</div>
+            <div class="card" >
+                <div class="card-header" style="font-size:20px" align="center">Detalle equipo</div>
 
                 <div class="card-body">
                     <form id="form1" name="form1" method="POST">
                         @csrf
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Id</label>
+                            <label class="col-md-4 col-form-label text-md-left">Id:</label>
 
                             <div class="col-md-8">
                                 <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="id">
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Marca</label>
+                            <label class="col-md-4 col-form-label text-md-left">Marca:</label>
 
                             <div class="col-md-8">
                                 <input id="marca" class="form-control" name="marca" required autocomplete="marca">
@@ -36,7 +36,7 @@
                         </div>
 
                          <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Serial</label>
+                            <label class="col-md-4 col-form-label text-md-left">Serial:</label>
 
                             <div class="col-md-8">
                                 <input  id="numeroSerie" class="form-control" name="numeroSerie" required autocomplete="numeroSerie">
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Clave ingreso</label>
+                            <label class="col-md-4 col-form-label text-md-left">Clave ingreso:</label>
 
                             <div class="col-md-8">
                                 <input id="claveIngreso" class="form-control" name="claveIngreso" required autocomplete="claveIngreso">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Propietario</label>
+                            <label class="col-md-4 col-form-label text-md-left">Propietario:</label>
 
                             <div class="col-md-8">
                                 <input readonly="readonly" id="usuario" class="form-control" name="usuario" required autocomplete="usuario">
@@ -97,9 +97,13 @@
                                 }
 
                                 function eliminarEquipo(){
-                                    var valor = document.getElementById('id').value;
-                                    document.form1.action = '{{ route('equipos.delete') }}';    
-                                    document.form1.submit();
+                                    var opcion = confirm("¿Está seguro que desea eliminar el equipo seleccionado?");
+                                    if(opcion){
+                                        var valor = document.getElementById('id').value;
+                                        document.form1.action = '{{ route('equipos.delete') }}';    
+                                        document.form1.submit();
+                                    }
+                                    
                                 }
 
                                 function limpiarCampos(){
@@ -131,7 +135,7 @@
             <div class="row justify-content-center">
                 <div class="col-md">
                     <div class="card">
-                        <div class="card-header">Equipos registrados</div>
+                        <div class="card-header" style="font-size:20px" align="center">Equipos registrados</div>
                     @include('listas.listaequiposseleccionable')
                     </div>
                 </div>
@@ -140,5 +144,4 @@
 
     </div>
 </div>
-<br>
 @endsection
