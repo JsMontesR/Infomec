@@ -70,14 +70,15 @@
                            
 
                             <br>
-                            <div class="btn-group">
-                            <input type="button" value="Registrar equipo" class="btn btn-primary" onclick= "registrarEquipo()" />
+                            <div class="btn-group col-md">
+                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarEquipo()" />
 
-                            <input type="button" value="Modificar equipo" class="btn btn-warning" onclick= "modificarEquipo()" />
+                            <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarEquipo()" />
 
-                            <input type="button" value="Limpiar campos" class="btn btn-secondary" onclick= "limpiarCampos()" />
+                        
+                            <input type="button" value="Limpiar" class="btn btn-secondary" onclick= "limpiarCampos()" />
                             
-                            <input type="button" value="Eliminar equipo" class="btn btn-danger" onclick= "eliminarEquipo()" />
+                            <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarEquipo()" />
                             </div>
                              <script type="text/javascript">
                                 
