@@ -5,7 +5,7 @@
 <br>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-70">
+        <div class="col-md">
             <div class="card">
                 <div class="card-header">Detalle equipos</div>
 
@@ -123,7 +123,7 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-70">
+                <div class="col-md">
                     <div class="card">
                         <div class="card-header">Equipos registrados</div>
                     @include('listas.listaequiposseleccionable')
