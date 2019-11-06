@@ -3,6 +3,12 @@
 @section('content')
 <h1 align="center">Equipos</h1>
 <br>
+
+ @if(session()->has('success'))
+
+    <div class="alert alert-success" role="alert">{{session('success')}}</div>
+
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md">
@@ -61,13 +67,10 @@
 
                         <div align="center">
 
-                            @if(session()->has('success'))
-
-                            <div class="alert alert-success" role="alert">{{session('success')}}</div>
-
-                           @endif
+                           
 
                             <br>
+                            <div class="btn-group">
                             <input type="button" value="Registrar equipo" class="btn btn-primary" onclick= "registrarEquipo()" />
 
                             <input type="button" value="Modificar equipo" class="btn btn-warning" onclick= "modificarEquipo()" />
@@ -75,7 +78,7 @@
                             <input type="button" value="Limpiar campos" class="btn btn-secondary" onclick= "limpiarCampos()" />
                             
                             <input type="button" value="Eliminar equipo" class="btn btn-danger" onclick= "eliminarEquipo()" />
-
+                            </div>
                              <script type="text/javascript">
                                 
                                 function registrarEquipo(){
