@@ -10,6 +10,7 @@
                                  @foreach ($registros->get(0) as $key => $value) 
                                     <th>{{$key}}</th>
                                 @endforeach
+                                <th>Seleccionar</th>
                               </tr>       
                             </thead>
                             <tbody>
@@ -18,7 +19,23 @@
                                     @foreach ($registros[0] as $key => $value) 
                                         <td>{{ $registro->{$key} }}</td>
                                     @endforeach
+                                    <td align="center"><input id="{{$registro->Id}}" type="radio" name="propietario"></td>
+                                    <script type="text/javascript">
+                                      
+                                        var cambiar = function(){
+                                            document.getElementById('id').value = {!!json_encode($registro->Id)!!};
+                                            document.getElementById('marca').value = {!!json_encode($registro->Marca)!!};
+                                            document.getElementById('numeroSerie').value = {!!json_encode($registro->Serial)!!};
+                                            document.getElementById('claveIngreso').value = {!!json_encode($registro->Clave)!!};
+                                            document.getElementById('usuario').value = {!!json_encode($registro->Email)!!};
+
+                                        };
+                                        var input = document.getElementById({!!json_encode($registro->Id)!!});
+                                        input.addEventListener('click',cambiar);
+                                        
+                                    </script>
                                 </tr>
+
                                 @endforeach
                             </tbody>
                             <tfoot>
@@ -26,6 +43,7 @@
                                  @foreach ($registros[0] as $key => $value) 
                                     <th>{{$key}}</th>
                                 @endforeach
+                                <th>Seleccionar</th>
                               </tr>
                             </tfoot>
                     @else

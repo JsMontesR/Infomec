@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 align="center">Equipos</h1>
+<br>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-70">
             <div class="card">
-                <div class="card-header">Equipos</div>
+                <div class="card-header">Detalle equipos</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('equipos.store') }}">
+                    <form id="form1" name="form1" method="POST">
                         @csrf
 
                         <div class="form-group row">
@@ -66,20 +68,48 @@
                            @endif
 
                             <br>
-                            <button type="submit" class="btn btn-primary">
-                                Registrar equipo
-                            </button>
-                        </form>
-                            <button type="submit" class="btn btn-warning">
-                                Modificar equipo
-                            </button>
-                            <button type="submit" class="btn btn-secondary">
-                                Limpiar campos
-                            </button>
-                            <button type="submit" class="btn btn-danger">
-                                Eliminar equipo
-                            </button>
+                            <input type="button" value="Registrar equipo" class="btn btn-primary" onclick= "registrarEquipo()" />
+
+                            <input type="button" value="Modificar equipo" class="btn btn-warning" onclick= "modificarEquipo()" />
+
+                            <input type="button" value="Limpiar campos" class="btn btn-secondary" onclick= "limpiarCampos()" />
                             
+                            <input type="button" value="Eliminar equipo" class="btn btn-danger" onclick= "eliminarEquipo()" />
+
+                             <script type="text/javascript">
+                                
+                                function registrarEquipo(){
+
+                                    document.form1.action = '{{ route('equipos.store') }}';
+                                    document.form1.submit();
+                                }
+
+                                function modificarEquipo(){
+
+                                    document.form1.action = '{{ route('equipos.update') }}';
+                                    document.form1.submit();
+                                }
+
+                                function eliminarEquipo(){
+                                    var valor = document.getElementById('id').value;
+                                    document.form1.action = '{{ route('equipos.delete') }}';    
+                                    document.form1.submit();
+                                }
+
+                                function limpiarCampos(){
+                                            document.getElementById('id').value = "";
+                                            document.getElementById('marca').value = "";
+                                            document.getElementById('numeroSerie').value = "";
+                                            document.getElementById('claveIngreso').value = "";
+                                            document.getElementById('usuario').value = "";
+
+                                        }
+
+                            </script>
+
+                        </form>
+
+
                         </div>
 
                         <br>
@@ -93,10 +123,10 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md-70">
                     <div class="card">
                         <div class="card-header">Equipos registrados</div>
-                    @include('listas.lista')
+                    @include('listas.listaequiposseleccionable')
                     </div>
                 </div>
             </div>

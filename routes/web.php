@@ -31,11 +31,16 @@ Route::get('/perfil','ConfigUserController@index')->name('perfil');
 Route::post('/actualizarUsuario/','ConfigUserController@update')->name('perfil.update');
 
 
-Route::get('/equipos','EquiposController@index')->name('equipos');
-Route::post('/equipo','EquiposController@store')->name('equipos.store');
-//Route::delete('/equipo/{id}','EquiposController@destroy')->name('equipos.delete');
-//Route::update('/equipo/{id}','EquiposController@update')->name('equipos.update');
 
+////CRUD Equipos
+
+Route::get('/equipos','EquiposController@index')->name('equipos');
+
+Route::post('/registrarEquipo','EquiposController@store')->name('equipos.store');
+
+Route::post('/borrarEquipo','EquiposController@destroy')->name('equipos.delete');
+
+Route::post('/actualizarEquipo','EquiposController@update')->name('equipos.update');
 
 
 

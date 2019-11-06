@@ -18,9 +18,10 @@ class EquiposController extends Controller
         $registros = DB::table('equipos')->select(
             DB::raw('equipos.id as "Id"'),
             DB::raw('equipos.marca as "Marca"'),
+            DB::raw('equipos.numeroSerie as "Serial"'),
             DB::raw('equipos.claveIngreso as "Clave"'),
-            DB::raw('users.email as "Correo propietario"'),
-            DB::raw('users.name as "Nombre propietario"'),
+            DB::raw('users.email as "Email"'),
+            DB::raw('users.name as "Propietario"'),
              DB::raw('equipos.created_at as "Fecha de creación"'),
             DB::raw('equipos.updated_at as "Fecha de actualización"')
         )->join('users','users.email','=','equipos.user_email')
@@ -31,16 +32,6 @@ class EquiposController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -48,6 +39,8 @@ class EquiposController extends Controller
      */
     public function store(Request $request)
     {
+
+        
         $equipo = new Equipo;
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
@@ -60,37 +53,22 @@ class EquiposController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $equipo = Equipo::findOrFail($request->id);
+        $equipo->marca = $request->marca;
+        $equipo->numeroSerie = $request->numeroSerie;
+        $equipo->claveIngreso = $request->claveIngreso;
+        $equipo->user_email = $request->usuario;
+        $equipo->save();
+
+        return back()->with('success', 'Equipo actualizado');
     }
 
     /**
@@ -99,8 +77,9 @@ class EquiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Equipo::findOrFail($request->id)->delete();
+        return redirect()->route('equipos')->with('success', 'Equipo eliminado');
     }
 }

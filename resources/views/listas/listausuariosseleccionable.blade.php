@@ -19,13 +19,13 @@
                                     @foreach ($registro as $key => $value) 
                                         <td>{{ $value }}</td>
                                     @endforeach
-                                    <td align="center"><input id={{$registro->Id}} type="radio" name="propietario"></td>
+                                    <td align="center"><input id={{$registro->Email}} type="radio" name="propietario"></td>
                                     <script type="text/javascript">
                                       
                                         var cambiar = function(){
                                             document.getElementById('usuario').value = {!!json_encode($registro->Email)!!};
                                         };
-                                        var input = document.getElementById({!!json_encode($registro->Id)!!});
+                                        var input = document.getElementById({!!json_encode($registro->Email)!!});
                                         input.addEventListener('click',cambiar);
                                         
                                     </script>
