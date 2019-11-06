@@ -75,7 +75,9 @@
 
                             <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarEquipo()" />
 
-                        
+                            </div>
+                            <br>
+                            <div class="btn-group col-md">
                             <input type="button" value="Limpiar" class="btn btn-secondary" onclick= "limpiarCampos()" />
                             
                             <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarEquipo()" />
