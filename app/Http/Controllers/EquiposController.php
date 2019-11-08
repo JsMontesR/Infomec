@@ -40,7 +40,6 @@ class EquiposController extends Controller
     public function store(Request $request)
     {
 
-        
         $equipo = new Equipo;
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
@@ -56,7 +55,6 @@ class EquiposController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -74,7 +72,7 @@ class EquiposController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)

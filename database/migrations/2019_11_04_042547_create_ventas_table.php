@@ -17,6 +17,7 @@ class CreateVentasTable extends Migration
             $table->bigIncrements('id');
             $table->date('fecha');
             $table->double('valor');
+            $table->integer('cliente_id');
             $table->timestamps();
         });
     }

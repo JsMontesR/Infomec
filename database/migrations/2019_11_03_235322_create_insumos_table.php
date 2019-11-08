@@ -20,7 +20,7 @@ class CreateInsumosTable extends Migration
             $table->integer('utilidad');
             $table->integer('cantidad');
             $table->double('precioVenta');
-            $table->string('proveedor');
+            $table->integer('proveedor?id');
             $table->timestamps();
         });
     }

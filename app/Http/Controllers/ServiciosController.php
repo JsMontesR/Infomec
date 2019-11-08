@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Servicio;
 
 class ServiciosController extends Controller
 {
@@ -13,7 +15,20 @@ class ServiciosController extends Controller
      */
     public function index()
     {
-        //
+         $equipos = DB::table('equipos')->select(
+            DB::raw('equipos.id as "Id"'),
+            DB::raw('equipos.marca as "Marca"'),
+            DB::raw('equipos.numeroSerie as "Serial"'),
+            DB::raw('equipos.claveIngreso as "Clave"'),
+            DB::raw('users.email as "Email"'),
+            DB::raw('users.name as "Propietario"'),
+            DB::raw('equipos.created_at as "Fecha de creación"'),
+            DB::raw('equipos.updated_at as "Fecha de actualización"')
+        )->join('users','users.email','=','equipos.user_email')
+            ->get();
+
+        $servicios = DB::table('servicios')->select(DB::raw('servicios.id as Id'),DB::raw('servicios.created_at as "Fecha"'),DB::raw('servicios.problemaReportado as "Problemas"'),DB::raw('servicios.notas as "Notas"'),DB::raw('equipos.id as "IdEquipo"'),DB::raw('equipos.marca as "Marca"'),DB::raw('users.email as "Correo electrónico cliente"'),DB::raw('users.name as "Nombre cliente"'))->join('equipos','equipos.id','=','servicios.equipo_id')->join('users','users.email','=','equipos.user_email')->get();
+        return view('crudservicios',compact('equipos','servicios'));
     }
 
     /**
@@ -34,51 +49,43 @@ class ServiciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $servicio = new Servicio;
+        $servicio->problemaReportado = $request->problemas;
+        $servicio->notas = $request->notas;
+        $servicio->equipo_id = $request->equipo_id;
+
+        $servicio->save();
+
+        return back()->with('success', 'Orden de servicio registrada');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $servicio = Servicio::findOrFail($request->id);
+        $servicio->problemaReportado = $request->problemas;
+        $servicio->notas = $request->notas;
+        $servicio->equipo_id = $request->equipo_id;
+        $servicio->save();
+
+        return back()->with('success', 'Orden de servicio actualizada');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Servicio::findOrFail($request->id)->delete();
+        return redirect()->route('servicios')->with('success', 'Orden de servicio eliminada');
     }
 }

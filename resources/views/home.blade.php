@@ -16,7 +16,7 @@
                 </div>
                 <div class="mr-5">Ordenes de servicio</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="{{ route('servicios') }}">
                 <span class="float-left">Ver ordenes de servicio</span>
                 <span class="float-right">
                   <em class="fas fa-angle-right"></em>
