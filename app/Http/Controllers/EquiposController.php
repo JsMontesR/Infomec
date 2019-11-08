@@ -27,7 +27,7 @@ class EquiposController extends Controller
         )->join('users','users.email','=','equipos.user_email')
             ->get();
 
-        $usuarios = DB::table('users')->select(DB::raw('id as Id'),DB::raw('email as "Email"'))->get();
+        $usuarios = DB::table('users')->select(DB::raw('id as Id'),DB::raw('email as "Email"'),DB::raw('name as "Nombre"'))->get();
         return view('crudequipos',compact('registros','usuarios'));
     }
 

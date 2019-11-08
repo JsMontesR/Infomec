@@ -20,14 +20,26 @@ class ServiciosController extends Controller
             DB::raw('equipos.marca as "Marca"'),
             DB::raw('equipos.numeroSerie as "Serial"'),
             DB::raw('equipos.claveIngreso as "Clave"'),
-            DB::raw('users.email as "Email"'),
             DB::raw('users.name as "Propietario"'),
+            DB::raw('users.email as "Email"'),
             DB::raw('equipos.created_at as "Fecha de creación"'),
-            DB::raw('equipos.updated_at as "Fecha de actualización"')
-        )->join('users','users.email','=','equipos.user_email')
+            DB::raw('equipos.updated_at as "Fecha de actualización"'))
+         ->join('users','users.email','=','equipos.user_email')
             ->get();
 
-        $servicios = DB::table('servicios')->select(DB::raw('servicios.id as Id'),DB::raw('servicios.created_at as "Fecha"'),DB::raw('servicios.problemaReportado as "Problemas"'),DB::raw('servicios.notas as "Notas"'),DB::raw('equipos.id as "IdEquipo"'),DB::raw('equipos.marca as "Marca"'),DB::raw('users.email as "Correo electrónico cliente"'),DB::raw('users.name as "Nombre cliente"'))->join('equipos','equipos.id','=','servicios.equipo_id')->join('users','users.email','=','equipos.user_email')->get();
+        $servicios = DB::table('servicios')->select(
+            DB::raw('servicios.id as Id'),
+            DB::raw('servicios.created_at as "Fecha"'),
+            DB::raw('servicios.problemaReportado as "Problemas"'),
+            DB::raw('servicios.notas as "Notas"'),
+            DB::raw('equipos.id as "IdEquipo"'),
+            DB::raw('equipos.marca as "Marca"'),
+            DB::raw('users.name as "Nombre cliente"'),
+            DB::raw('users.email as "Correo electrónico cliente"'))
+        ->join('equipos','equipos.id','=','servicios.equipo_id')
+        ->join('users','users.email','=','equipos.user_email')
+            ->get();
+
         return view('crudservicios',compact('equipos','servicios'));
     }
 
