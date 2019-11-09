@@ -14,7 +14,9 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
+       $usuarios = DB::table('users')->select(DB::raw('id as Id'),DB::raw('email as "Email"'),DB::raw('name as "Nombre"'))->get();
+
+        return view('crudusuarios',compact('proveedores'));
     }
 
     /**

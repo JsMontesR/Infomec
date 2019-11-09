@@ -96,18 +96,49 @@
         </a>
       </li>
       
+      
+      @if(auth()->user()->rol === 'administrador')
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('servicios')}}">
+          <em class="fas fa-fw fa-tags"></em>
+          <span>Ordenes de servicio</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('revisiones')}}">
+          <em class="fas fa-fw fa-wrench"></em>
+          <span>Revisiones</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('equipos')}}">
+          <em class="fas fa-fw fa-desktop"></em>
+          <span>Equipos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('usuarios')}}">
+          <em class="fas fa-fw fa-address-card"></em>
+          <span>Usuarios</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('insumos')}}">
+          <em class="fas fa-fw fa-archive"></em>
+          <span>Insumos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('ventas')}}">
+          <em class="fas fa-fw fa-shopping-cart"></em>
+          <span>Ventas</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('proveedores')}}">
+          <em class="fas fa-fw fa-users"></em>
+          <span>Proveedores</span></a>
+      </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{route('diagnostica')}}">
           <em class="fas fa-fw fa-chart-area"></em>
           <span>Haga su diagnóstico</span></a>
       </li>
-      @if(auth()->user()->rol === 'administrador')
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('reportes')}}">
-          <em class="fas fa-fw fa-table"></em>
-          <span>Informes</span></a>
-      </li>
-      @endif
       @endauth
     </ul>
 
