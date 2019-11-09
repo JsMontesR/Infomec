@@ -58,18 +58,16 @@
                                     @if(!$equipos->isEmpty())
                                             <thead>
                                               <tr>
-                                                 @foreach ($equipos->get(0) as $key => $value) 
+                                                <th>Seleccionar</th>
+                                                @foreach ($equipos->get(0) as $key => $value) 
                                                     <th>{{$key}}</th>
                                                 @endforeach
-                                                <th>Seleccionar</th>
+                                                
                                               </tr>       
                                             </thead>
                                             <tbody>
                                                @foreach($equipos as $equipo)
                                                 <tr>
-                                                    @foreach ($equipos[0] as $key => $value) 
-                                                        <td>{{ $equipo->{$key} }}</td>
-                                                    @endforeach
                                                     <td align="center"><input id="{{$equipo->Id}}e" type="radio"></td>
                                                     <script type="text/javascript">
                                                       
@@ -80,16 +78,19 @@
                                                         input.addEventListener('click',cambiar);
                                                         
                                                     </script>
+                                                    @foreach ($equipos[0] as $key => $value) 
+                                                        <td>{{ $equipo->{$key} }}</td>
+                                                    @endforeach
                                                 </tr>
 
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
                                               <tr>
-                                                 @foreach ($equipos[0] as $key => $value) 
+                                                <th>Seleccionar</th>
+                                                @foreach ($equipos[0] as $key => $value) 
                                                     <th>{{$key}}</th>
                                                 @endforeach
-                                                <th>Seleccionar</th>
                                               </tr>
                                             </tfoot>
                                     @else
@@ -221,18 +222,16 @@
                                 @if(!$servicios->isEmpty())
                                         <thead>
                                           <tr>
-                                             @foreach ($servicios->get(0) as $key => $value) 
+                                            <th>Seleccionar</th>
+                                            @foreach ($servicios->get(0) as $key => $value) 
                                                 <th>{{$key}}</th>
                                             @endforeach
-                                            <th>Seleccionar</th>
+                                            
                                           </tr>       
                                         </thead>
                                         <tbody>
                                            @foreach($servicios as $servicio)
                                             <tr>
-                                                @foreach ($servicio as $key => $value) 
-                                                    <td>{{ $value }}</td>
-                                                @endforeach
                                                 <td align="center"><input id="{{$servicio->Id}}" type="radio" name="propietario"></td>
                                                 <script type="text/javascript">
                                                     
@@ -248,16 +247,19 @@
                                                     input.addEventListener('click',cambiar);
                                                     
                                                 </script>
+                                                @foreach ($servicio as $key => $value) 
+                                                    <td>{{ $value }}</td>
+                                                @endforeach
                                             </tr>
 
                                             @endforeach
                                         </tbody>
                                         <tfoot>
                                           <tr>
-                                             @foreach ($servicios[0] as $key => $value) 
+                                            <th>Seleccionar</th>
+                                            @foreach ($servicios[0] as $key => $value) 
                                                 <th>{{$key}}</th>
                                             @endforeach
-                                            <th>Seleccionar</th>
                                           </tr>
                                         </tfoot>
                                 @else

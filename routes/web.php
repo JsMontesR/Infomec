@@ -92,6 +92,16 @@ Route::post('/borrarProveedores','ProveedoresController@destroy')->name('proveed
 
 Route::post('/actualizarProveedores','ProveedoresController@update')->name('proveedores.update');
 
+////CRUD Clientes
+
+Route::get('/usuarios','ProveedoresController@index')->name('usuarios');
+
+Route::post('/registrarUsuarios','UsuariosController@store')->name('usuarios.store');
+
+Route::post('/borrarUsuarios','UsuariosController@destroy')->name('usuarios.delete');
+
+Route::post('/actualizarUsuarios','UsuariosController@update')->name('usuarios.update');
+
 //Reportes
 
 Route::get('/reportepredfecha', 'ReportesController@prediccionesFecha')->name('reportepredfecha');

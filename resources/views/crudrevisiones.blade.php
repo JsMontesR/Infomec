@@ -39,18 +39,15 @@
                                                     @if(!$servicios->isEmpty())
                                                             <thead>
                                                               <tr>
+                                                                <th>Seleccionar</th>
                                                                 @foreach ($servicios->get(0) as $key => $value) 
                                                                     <th>{{$key}}</th>
                                                                 @endforeach
-                                                                <th>Seleccionar</th>
                                                               </tr>       
                                                             </thead>
                                                             <tbody>
                                                                @foreach($servicios as $servicio)
                                                                 <tr>
-                                                                    @foreach ($servicio as $key => $value) 
-                                                                        <td>{{ $value }}</td>
-                                                                    @endforeach
                                                                     <td align="center"><input id="{{$servicio->Id}}" type="radio" name="propietario"></td>
                                                                     <script type="text/javascript">
                                                                       
@@ -63,16 +60,19 @@
                                                                         input.addEventListener('click',cambiar);
                                                                         
                                                                     </script>
+                                                                    @foreach ($servicio as $key => $value) 
+                                                                        <td>{{ $value }}</td>
+                                                                    @endforeach
                                                                 </tr>
 
                                                                 @endforeach
                                                             </tbody>
                                                             <tfoot>
                                                               <tr>
-                                                                 @foreach($servicios[0] as $key => $value) 
+                                                                <th>Seleccionar</th>
+                                                                @foreach($servicios[0] as $key => $value) 
                                                                     <th>{{$key}}</th>
                                                                 @endforeach
-                                                                <th>Seleccionar</th>
                                                               </tr>
                                                             </tfoot>
                                                     @else
@@ -235,18 +235,15 @@
                                                  @if(!$revisiones->isEmpty())
                                                             <thead>
                                                               <tr>
-                                                                 @foreach($revisiones->get(0) as $key => $value) 
+                                                                <th>Seleccionar</th>
+                                                                @foreach($revisiones->get(0) as $key => $value) 
                                                                     <th>{{$key}}</th>
                                                                 @endforeach
-                                                                <th>Seleccionar</th>
                                                               </tr>       
                                                             </thead>
                                                             <tbody>
                                                                @foreach($revisiones as $revision)
                                                                 <tr>
-                                                                    @foreach($revision as $key => $value) 
-                                                                        <td>{{ $value }}</td>
-                                                                    @endforeach
                                                                     <td align="center"><input id="{{$revision->Id}}r" type="radio" name="revisiones"></td>
                                                                     <script type="text/javascript">
                                                                       
@@ -262,16 +259,19 @@
                                                                         input.addEventListener('click',cambiar);
                                                                         
                                                                     </script>
+                                                                    @foreach($revision as $key => $value) 
+                                                                        <td>{{ $value }}</td>
+                                                                    @endforeach 
                                                                 </tr>
 
                                                                 @endforeach
                                                             </tbody>
                                                             <tfoot>
                                                               <tr>
-                                                                 @foreach ($revisiones[0] as $key => $value) 
+                                                                <th>Seleccionar</th>
+                                                                @foreach ($revisiones[0] as $key => $value) 
                                                                     <th>{{$key}}</th>
                                                                 @endforeach
-                                                                <th>Seleccionar</th>
                                                               </tr>
                                                             </tfoot>
                                                     @else
