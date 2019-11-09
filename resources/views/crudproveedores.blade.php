@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 align="center">Equipos</h1>
+<h1 align="center">Proveedores</h1>
 <br>
 
  @if(session()->has('success'))
@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md">
             <div class="card" >
-                <div class="card-header" style="font-size:20px" align="center">Detalle equipo</div>
+                <div class="card-header" style="font-size:20px" align="center">Detalle proveedor</div>
 
                 <div class="card-body">
                     <form id="form1" name="form1" method="POST">
@@ -28,38 +28,52 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Marca:</label>
+                            <label class="col-md-4 col-form-label text-md-left">Nombre:</label>
 
                             <div class="col-md-8">
-                                <input id="marca" class="form-control" name="marca" required autocomplete="marca">
+                                <input id="nombre" class="form-control" name="nombre" required autocomplete="nombre">
                             </div>
                         </div>
 
                          <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Serial:</label>
+                            <label class="col-md-4 col-form-label text-md-left">Email:</label>
 
                             <div class="col-md-8">
-                                <input  id="numeroSerie" class="form-control" name="numeroSerie" required autocomplete="numeroSerie">
+                                <input  id="email" class="form-control" name="email" required autocomplete="email">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Clave ingreso:</label>
+                            <label class="col-md-4 col-form-label text-md-left">Teléfono:</label>
 
                             <div class="col-md-8">
-                                <input id="claveIngreso" class="form-control" name="claveIngreso" required autocomplete="claveIngreso">
+                                <input id="telefono" class="form-control" name="telefono" required autocomplete="telefono">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Propietario:</label>
+                            <label class="col-md-4 col-form-label text-md-left">Dirección:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="usuario" class="form-control" name="usuario" required autocomplete="usuario">
+                                <input readonly="readonly" id="direccion" class="form-control" name="direccion" required autocomplete="direccion">
                             </div>
                         </div>
 
-                        @include('listas.listausuariosseleccionable')
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-left">NIT:</label>
+
+                            <div class="col-md-8">
+                                <input readonly="readonly" id="NIT" class="form-control" name="NIT" required autocomplete="NIT">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-left">Descripción:</label>
+
+                            <div class="col-md-8">
+                                <input readonly="readonly" id="descripcion" class="form-control" name="descripcion" required autocomplete="descripcion">
+                            </div>
+                        </div>
 
                         </div>
 
@@ -71,36 +85,36 @@
 
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarEquipo()" />
+                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarProveedor()" />
 
-                            <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarEquipo()" />
+                            <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarProveedor()" />
 
                             </div>
                             <br>
                             <div class="btn-group col-md">
                             <input type="button" value="Limpiar" class="btn btn-secondary" onclick= "limpiarCampos()" />
                             
-                            <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarEquipo()" />
+                            <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarProveedor()" />
                             </div>
                              <script type="text/javascript">
                                 
-                                function registrarEquipo(){
+                                function registrarProveedor(){
 
-                                    document.form1.action = '{{ route('equipos.store') }}';
+                                    document.form1.action = '{{ route('proveedores.store') }}';
                                     document.form1.submit();
                                 }
 
-                                function modificarEquipo(){
+                                function modificarProveedor(){
 
-                                    document.form1.action = '{{ route('equipos.update') }}';
+                                    document.form1.action = '{{ route('proveedores.update') }}';
                                     document.form1.submit();
                                 }
 
-                                function eliminarEquipo(){
-                                    var opcion = confirm("¿Está seguro que desea eliminar el equipo seleccionado?");
+                                function eliminarProveedor(){
+                                    var opcion = confirm("¿Está seguro que desea eliminar el proveedor seleccionado?");
                                     if(opcion){
                                         var valor = document.getElementById('id').value;
-                                        document.form1.action = '{{ route('equipos.delete') }}';    
+                                        document.form1.action = '{{ route('proveedores.delete') }}';    
                                         document.form1.submit();
                                     }
                                     
@@ -108,10 +122,12 @@
 
                                 function limpiarCampos(){
                                             document.getElementById('id').value = "";
-                                            document.getElementById('marca').value = "";
-                                            document.getElementById('numeroSerie').value = "";
-                                            document.getElementById('claveIngreso').value = "";
-                                            document.getElementById('usuario').value = "";
+                                            document.getElementById('nombre').value = "";
+                                            document.getElementById('email').value = "";
+                                            document.getElementById('telefono').value = "";
+                                            document.getElementById('direccion').value = "";
+                                            document.getElementById('NIT').value = "";
+                                            document.getElementById('descripcion').value = "";
 
                                         }
 
@@ -135,8 +151,8 @@
             <div class="row justify-content-center">
                 <div class="col-md">
                     <div class="card">
-                        <div class="card-header" style="font-size:20px" align="center">Equipos registrados</div>
-                    @include('listas.listaequiposseleccionable')
+                        <div class="card-header" style="font-size:20px" align="center">Proveedores registrados</div>
+                    
                     </div>
                 </div>
             </div>
