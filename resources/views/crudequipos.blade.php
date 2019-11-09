@@ -67,38 +67,42 @@
                                                   <table class="table table-bordered" id="example" width="100%" cellspacing="0">
                                                     @if(!$usuarios->isEmpty())
                                                             <thead>
+
                                                               <tr>
-                                                                 @foreach ($usuarios->get(0) as $key => $value) 
+                                                                <th>Seleccionar</th>
+                                                                @foreach ($usuarios->get(0) as $key => $value) 
                                                                     <th>{{$key}}</th>
                                                                 @endforeach
-                                                                <th>Seleccionar</th>
                                                               </tr>      
                                                             </thead>
                                                             <tbody>
+                                                                
                                                                @foreach($usuarios as $registro)
                                                                 <tr>
+                                                                    <td align="center"><input id={{$registro->Email}} type="radio" name="formu"></td>
+                                                                <script type="text/javascript">
+                                                                  
+                                                                    var cambiar = function(){
+                                                                        document.getElementById('user_email').value = {!!json_encode($registro->Email)!!};
+                                                                    };
+                                                                    var input = document.getElementById({!!json_encode($registro->Email)!!});
+                                                                    input.addEventListener('click',cambiar);
+                                                                    
+                                                                </script>
                                                                     @foreach ($registro as $key => $value) 
                                                                         <td>{{ $value }}</td>
                                                                     @endforeach
-                                                                    <td align="center"><input id={{$registro->Email}} type="radio" name="formu"></td>
-                                                                    <script type="text/javascript">
-                                                                      
-                                                                        var cambiar = function(){
-                                                                            document.getElementById('user_email').value = {!!json_encode($registro->Email)!!};
-                                                                        };
-                                                                        var input = document.getElementById({!!json_encode($registro->Email)!!});
-                                                                        input.addEventListener('click',cambiar);
-                                                                        
-                                                                    </script>
+                                                                    
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
                                                             <tfoot>
                                                               <tr>
-                                                                 @foreach ($usuarios[0] as $key => $value) 
+                                                                <th>Seleccionar</th>
+                                                                @foreach ($usuarios[0] as $key => $value) 
                                                                     <th>{{$key}}</th>
                                                                 @endforeach
-                                                                <th>Seleccionar</th>
+                                                                
                                                               </tr>
                                                             </tfoot>
                                                     @else
@@ -236,18 +240,16 @@
                                                 @if(!$registros->isEmpty())
                                                         <thead>
                                                           <tr>
-                                                             @foreach ($registros->get(0) as $key => $value) 
+                                                            <th>Seleccionar</th>
+                                                            @foreach ($registros->get(0) as $key => $value) 
                                                                 <th>{{$key}}</th>
                                                             @endforeach
-                                                            <th>Seleccionar</th>
+                                                            
                                                           </tr>       
                                                         </thead>
                                                         <tbody>
                                                            @foreach($registros as $registro)
                                                             <tr>
-                                                                @foreach ($registros[0] as $key => $value) 
-                                                                    <td>{{ $registro->{$key} }}</td>
-                                                                @endforeach
                                                                 <td align="center"><input id="{{$registro->Id}}" type="radio" name="propietario"></td>
                                                                 <script type="text/javascript">
                                                                   
@@ -263,16 +265,20 @@
                                                                     input.addEventListener('click',cambiar);
                                                                     
                                                                 </script>
+                                                                @foreach ($registros[0] as $key => $value) 
+                                                                    <td>{{ $registro->{$key} }}</td>
+                                                                @endforeach
+                                                                
                                                             </tr>
 
                                                             @endforeach
                                                         </tbody>
                                                         <tfoot>
                                                           <tr>
-                                                             @foreach ($registros[0] as $key => $value) 
+                                                            <th>Seleccionar</th>
+                                                            @foreach ($registros[0] as $key => $value) 
                                                                 <th>{{$key}}</th>
                                                             @endforeach
-                                                            <th>Seleccionar</th>
                                                           </tr>
                                                         </tfoot>
                                                 @else
