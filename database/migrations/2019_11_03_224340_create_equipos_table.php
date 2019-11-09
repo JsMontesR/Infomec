@@ -18,8 +18,6 @@ class CreateEquiposTable extends Migration
             $table->string('marca');
             $table->string('numeroSerie');
             $table->string('claveIngreso');
-            $table->string('user_email');
-            $table->foreign('user_email')->references('email')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
