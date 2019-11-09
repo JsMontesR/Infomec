@@ -20,7 +20,8 @@ class CreateInsumosTable extends Migration
             $table->integer('utilidad');
             $table->integer('cantidad');
             $table->double('precioVenta');
-            $table->integer('proveedor?id');
+            $table->integer('proveedor_id');
+            $table->foreign('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ class CreateServiciosTable extends Migration
             $table->string('problemaReportado');
             $table->string('notas');
             $table->integer('equipo_id');
+            $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade');
             $table->timestamps();
         });
     }

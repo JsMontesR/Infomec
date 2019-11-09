@@ -18,6 +18,7 @@ class CreateVentasTable extends Migration
             $table->date('fecha');
             $table->double('valor');
             $table->integer('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

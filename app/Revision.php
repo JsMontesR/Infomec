@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Revision extends Model
 {
     protected $table = 'revisiones';
-    protected $fillable = ['id','fechaDespacho','resultadosRevision','notasRevision','fechaGarantia'];
+    protected $fillable = ['servicio_id','resultadosRevision','notasRevision','fechaGarantia'];
 }

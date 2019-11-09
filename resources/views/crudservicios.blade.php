@@ -70,13 +70,13 @@
                                                     @foreach ($equipos[0] as $key => $value) 
                                                         <td>{{ $equipo->{$key} }}</td>
                                                     @endforeach
-                                                    <td align="center"><input id="{{$equipo->Id}}" type="radio" name="propietario"></td>
+                                                    <td align="center"><input id="{{$equipo->Id}}e" type="radio"></td>
                                                     <script type="text/javascript">
                                                       
                                                         var cambiar = function(){
                                                             document.getElementById('equipo_id').value = {!!json_encode($equipo->Id)!!};
                                                         };
-                                                        var input = document.getElementById({!!json_encode($equipo->Id)!!});
+                                                        var input = document.getElementById({!!json_encode($equipo->Id)!!}+"e");
                                                         input.addEventListener('click',cambiar);
                                                         
                                                     </script>
@@ -151,33 +151,33 @@
 
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarEquipo()" />
+                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarServicio()" />
 
-                            <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarEquipo()" />
+                            <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarServicio()" />
 
                             </div>
                             <br>
                             <div class="btn-group col-md">
                             <input type="button" value="Limpiar" class="btn btn-secondary" onclick= "limpiarCampos()" />
                             
-                            <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarEquipo()" />
+                            <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarServicio()" />
                             </div>
                              <script type="text/javascript">
                                 
-                                function registrarEquipo(){
+                                function registrarServicio(){
 
                                     document.form2.action = '{{ route('servicios.store') }}';
                                     document.form2.submit();
                                 }
 
-                                function modificarEquipo(){
+                                function modificarServicio(){
 
                                     document.form2.action = '{{ route('servicios.update') }}';
                                     document.form2.submit();
                                 }
 
-                                function eliminarEquipo(){
-                                    var opcion = confirm("¿Está seguro que desea eliminar el equipo seleccionado?");
+                                function eliminarServicio(){
+                                    var opcion = confirm("¿Está seguro que desea eliminar la orden de servicio seleccionada?");
                                     if(opcion){
                                         var valor = document.getElementById('id').value;
                                         document.form2.action = '{{ route('servicios.delete') }}';    
@@ -230,12 +230,12 @@
                                         <tbody>
                                            @foreach($servicios as $servicio)
                                             <tr>
-                                                @foreach ($servicios[0] as $key => $value) 
-                                                    <td>{{ $servicio->{$key} }}</td>
+                                                @foreach ($servicio as $key => $value) 
+                                                    <td>{{ $value }}</td>
                                                 @endforeach
                                                 <td align="center"><input id="{{$servicio->Id}}" type="radio" name="propietario"></td>
                                                 <script type="text/javascript">
-                                                  
+                                                    
                                                     var cambiar = function(){
 
                                                         document.getElementById('id').value = {!!json_encode($servicio->Id)!!};

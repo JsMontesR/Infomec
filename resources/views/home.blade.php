@@ -32,7 +32,7 @@
                 </div>
                 <div class="mr-5">Revisiones</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="{{ route('revisiones') }}">
                 <span class="float-left">Ver revisiones</span>
                 <span class="float-right">
                   <em class="fas fa-angle-right"></em>
