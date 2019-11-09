@@ -60,7 +60,7 @@ class RevisionesController extends Controller
 
         $revision->save();
 
-        return back()->with('success', 'Revisión registrado');
+        return back()->with('success', 'Revisión registrada');
     }
 
 

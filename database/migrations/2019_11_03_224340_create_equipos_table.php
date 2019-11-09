@@ -17,7 +17,7 @@ class CreateEquiposTable extends Migration
             $table->bigIncrements('id');
             $table->string('marca');
             $table->string('numeroSerie');
-            $table->string('claveIngreso');
+            $table->string('claveIngreso')->nullable();
             $table->timestamps();
         });
     }

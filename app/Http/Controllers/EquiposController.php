@@ -67,7 +67,7 @@ class EquiposController extends Controller
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
         $equipo->claveIngreso = $request->claveIngreso;
-        $equipo->user_email = $request->usuario;
+        $equipo->user_email = $request->user_email;
         $equipo->save();
 
         return back()->with('success', 'Equipo actualizado');

@@ -16,7 +16,7 @@ class CreateRevisionesTable extends Migration
         Schema::create('revisiones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('resultadosRevision');
-            $table->string('notasRevision');
+            $table->string('notasRevision')->nullable();
             $table->date('fechaGarantia');
             $table->timestamps();
         });
