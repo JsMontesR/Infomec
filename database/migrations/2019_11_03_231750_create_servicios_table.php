@@ -17,7 +17,6 @@ class CreateServiciosTable extends Migration
             $table->bigIncrements('id');
             $table->string('problemaReportado');
             $table->string('notas');
-            $table->integer('equipo_id');
             $table->timestamps();
         });
     }

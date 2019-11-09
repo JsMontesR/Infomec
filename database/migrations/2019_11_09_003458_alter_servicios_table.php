@@ -14,7 +14,8 @@ class AlterServiciosTable extends Migration
     public function up()
     {
         Schema::table('servicios', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('equipo_id');
+            $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade');
         });
     }
 
@@ -26,7 +27,8 @@ class AlterServiciosTable extends Migration
     public function down()
     {
         Schema::table('servicios', function (Blueprint $table) {
-            //
+            $table->dropForeign(['equipo_id']);
+            $table->dropColumn('equipo_id');  
         });
     }
 }

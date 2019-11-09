@@ -14,7 +14,8 @@ class AlterInsumosTable extends Migration
     public function up()
     {
         Schema::table('insumos', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('proveedor_id');
+            $table->foreign('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
         });
     }
 
@@ -26,7 +27,8 @@ class AlterInsumosTable extends Migration
     public function down()
     {
         Schema::table('insumos', function (Blueprint $table) {
-            //
+            $table->dropForeign(['proveedor_id']);
+            $table->dropColumn('proveedor_id');
         });
     }
 }

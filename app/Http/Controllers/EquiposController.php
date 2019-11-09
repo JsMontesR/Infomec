@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Equipo;
+use App\User;
 use Illuminate\Http\Request;
 use DB;
 
@@ -44,11 +45,14 @@ class EquiposController extends Controller
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
         $equipo->claveIngreso = $request->claveIngreso;
-        $equipo->user_email = $request->usuario;
-
+        $equipo->user_email = $request->user_email;
         $equipo->save();
 
-        return back()->with('success', 'Equipo registrado');
+        // Equipo::create($request->all());
+
+        // User::findOrFail($request->user_email)->equipos()->save($equipo);
+
+        return redirect()->route('equipos')->with('success', 'Equipo registrado');
     }
 
     /**

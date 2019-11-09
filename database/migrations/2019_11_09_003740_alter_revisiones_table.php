@@ -14,7 +14,8 @@ class AlterRevisionesTable extends Migration
     public function up()
     {
         Schema::table('revisiones', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('servicio_id');
+            $table->foreign('servicio_id')->references('id')->on('servicios')->onDelete('cascade');
         });
     }
 
@@ -26,7 +27,8 @@ class AlterRevisionesTable extends Migration
     public function down()
     {
         Schema::table('revisiones', function (Blueprint $table) {
-            //
+            $table->dropForeign(['servicio_id']);
+            $table->dropColumn('servicio_id');
         });
     }
 }

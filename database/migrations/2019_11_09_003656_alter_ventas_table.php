@@ -14,7 +14,8 @@ class AlterVentasTable extends Migration
     public function up()
     {
         Schema::table('ventas', function (Blueprint $table) {
-            //
+            $table->string('user_email');
+            $table->foreign('user_email')->references('email')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,7 +27,8 @@ class AlterVentasTable extends Migration
     public function down()
     {
         Schema::table('ventas', function (Blueprint $table) {
-            //
+            $table->dropForeign(['user_email']);
+            $table->dropColumn('user_email');
         });
     }
 }

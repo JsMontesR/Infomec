@@ -25,7 +25,7 @@ Global server settings:
   - sonar.auth.github.loginStrategy=Same as GitHub login
   - sonar.core.id=BF41A1F2-AW234gs_pqy85ZxpUWiC
   - sonar.core.serverBaseURL=infosonar
-  - sonar.core.startTime=2019-11-08T21:36:14-0500
+  - sonar.core.startTime=2019-11-09T10:11:28-0500
 Project server settings:
 Project scanner properties:
   - sonar.host.url=http://localhost:9000

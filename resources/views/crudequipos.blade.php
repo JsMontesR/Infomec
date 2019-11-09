@@ -55,7 +55,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Propietario:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="usuario" class="form-control" name="usuario" required autocomplete="usuario">
+                                <input readonly="readonly" id="user_email" class="form-control" name="user_email" required autocomplete="user_email">
                             </div>
                         </div>
 
@@ -80,11 +80,11 @@
                                                                     @foreach ($registro as $key => $value) 
                                                                         <td>{{ $value }}</td>
                                                                     @endforeach
-                                                                    <td align="center"><input id={{$registro->Email}} type="radio" name="propietario"></td>
+                                                                    <td align="center"><input id={{$registro->Email}} type="radio" name="formu"></td>
                                                                     <script type="text/javascript">
                                                                       
                                                                         var cambiar = function(){
-                                                                            document.getElementById('usuario').value = {!!json_encode($registro->Email)!!};
+                                                                            document.getElementById('user_email').value = {!!json_encode($registro->Email)!!};
                                                                         };
                                                                         var input = document.getElementById({!!json_encode($registro->Email)!!});
                                                                         input.addEventListener('click',cambiar);
@@ -202,7 +202,7 @@
                                             document.getElementById('marca').value = "";
                                             document.getElementById('numeroSerie').value = "";
                                             document.getElementById('claveIngreso').value = "";
-                                            document.getElementById('usuario').value = "";
+                                            document.getElementById('user_email').value = "";
 
                                         }
 
@@ -256,7 +256,7 @@
                                                                         document.getElementById('marca').value = {!!json_encode($registro->Marca)!!};
                                                                         document.getElementById('numeroSerie').value = {!!json_encode($registro->Serial)!!};
                                                                         document.getElementById('claveIngreso').value = {!!json_encode($registro->Clave)!!};
-                                                                        document.getElementById('usuario').value = {!!json_encode($registro->Email)!!};
+                                                                        document.getElementById('user_email').value = {!!json_encode($registro->Email)!!};
 
                                                                     };
                                                                     var input = document.getElementById({!!json_encode($registro->Id)!!});
