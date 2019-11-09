@@ -14,7 +14,7 @@
                 <div class="card-body-icon">
                   <em class="fas fa-fw fa-tags"></em>
                 </div>
-                <div class="mr-5">Ordenes de servicio</div>
+                <div class="mr-5" style="font-size:20px">Ordenes de servicio</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('servicios') }}">
                 <span class="float-left">Ver ordenes de servicio</span>
@@ -30,7 +30,7 @@
                 <div class="card-body-icon">
                   <em class="fas fa-fw fa-wrench"></em>
                 </div>
-                <div class="mr-5">Revisiones</div>
+                <div class="mr-5" style="font-size:20px">Revisiones</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('revisiones') }}">
                 <span class="float-left">Ver revisiones</span>
@@ -46,7 +46,7 @@
                 <div class="card-body-icon">
                   <em class="fas fa-fw fa-desktop"></em>
                 </div>
-                <div class="mr-5">Equipos</div>
+                <div class="mr-5" style="font-size:20px">Equipos</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('equipos') }}">
                 <span class="float-left">Ver equipos</span>
@@ -62,7 +62,7 @@
                 <div class="card-body-icon">
                   <em class="fas fa-fw fa-archive"></em>
                 </div>
-                <div class="mr-5">Insumos</div>
+                <div class="mr-5" style="font-size:20px">Insumos</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('insumos') }}">
                 <span class="float-left">Ver insumos</span>
@@ -78,7 +78,7 @@
                 <div class="card-body-icon">
                   <em class="fas fa-fw fa-shopping-cart"></em>
                 </div>
-                <div class="mr-5">Ventas</div>
+                <div class="mr-5" style="font-size:20px">Ventas</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('ventas') }}">
                 <span class="float-left">Ver ventas</span>
@@ -94,7 +94,7 @@
                 <div class="card-body-icon">
                   <em class="fas fa-fw fa-users"></em>
                 </div>
-                <div class="mr-5">Proveedores</div>
+                <div class="mr-5" style="font-size:20px">Proveedores</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="{{ route('proveedores') }}">
                 <span class="float-left">Ver proveedores</span>

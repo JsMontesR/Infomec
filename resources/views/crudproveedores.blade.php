@@ -39,7 +39,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Email:</label>
 
                             <div class="col-md-8">
-                                <input  id="email" class="form-control" name="email" required autocomplete="email">
+                                <input  id="email" class="form-control" name="email" type="email" required autocomplete="email">
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Dirección:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="direccion" class="form-control" name="direccion" required autocomplete="direccion">
+                                <input  id="direccion" class="form-control" name="direccion" required autocomplete="direccion">
                             </div>
                         </div>
 
@@ -63,7 +63,7 @@
                             <label class="col-md-4 col-form-label text-md-left">NIT:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="NIT" class="form-control" name="NIT" required autocomplete="NIT">
+                                <input  id="NIT" class="form-control" name="NIT" required autocomplete="NIT">
                             </div>
                         </div>
 
@@ -71,7 +71,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Descripción:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="descripcion" class="form-control" name="descripcion" required autocomplete="descripcion">
+                                <input  id="descripcion" class="form-control" name="descripcion" required autocomplete="descripcion">
                             </div>
                         </div>
 
@@ -152,12 +152,115 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header" style="font-size:20px" align="center">Proveedores registrados</div>
-                    
-                    </div>
+                            <div class="card mb-3">     
+                              <div class="card-body">
+                                <div class="table-responsive">
+                                  <table class="table table-bordered" id="example2" width="100%" cellspacing="0">
+                                    @if(!$proveedores->isEmpty())
+                                            <thead>
+                                              <tr>
+                                                 @foreach ($proveedores->get(0) as $key => $value) 
+                                                    @if($key !== 'Descripcion')
+                                                    <th>{{$key}}</th>
+                                                    @endif
+                                                @endforeach
+                                                <th>Seleccionar</th>
+                                              </tr>       
+                                            </thead>
+                                            <tbody>
+                                               @foreach($proveedores as $registro)
+                                                <tr>
+                                                    @foreach ($registro as $key => $value) 
+                                                        @if($key !== 'Descripcion')
+                                                        <td>{{ $value }}</td>
+                                                        @endif
+                                                    @endforeach
+                                                    <td align="center"><input id="{{$registro->Id}}" type="radio" name="propietario"></td>
+                                                    <script type="text/javascript">
+                                                      
+                                                        var cambiar = function(){
+                                                            document.getElementById('id').value = {!!json_encode($registro->Id)!!};
+                                                            document.getElementById('nombre').value = {!!json_encode($registro->Nombre)!!};
+                                                            document.getElementById('email').value = {!!json_encode($registro->Email)!!};
+                                                            document.getElementById('telefono').value = {!!json_encode($registro->Telefono)!!};
+                                                            document.getElementById('direccion').value = {!!json_encode($registro->Direccion)!!};
+                                                            document.getElementById('NIT').value = {!!json_encode($registro->NIT)!!};
+                                                            document.getElementById('descripcion').value = {!!json_encode($registro->Descripcion)!!};
+
+                                                        };
+                                                        var input = document.getElementById({!!json_encode($registro->Id)!!});
+                                                        input.addEventListener('click',cambiar);
+                                                        
+                                                    </script>
+                                                </tr>
+
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                              <tr>
+                                                 @foreach ($proveedores[0] as $key => $value) 
+                                                    @if($key !== 'Descripcion')
+                                                    <th>{{$key}}</th>
+                                                    @endif
+                                                @endforeach
+                                                <th>Seleccionar</th>
+                                              </tr>
+                                            </tfoot>
+                                    @else
+                                      <h3 align="center">No hay proveedores disponibles, intentelo más tarde</h3>
+                                    @endif
+                                  </table>
+                                  
+                                  <script type="text/javascript" src="{{asset('js/spanishtable.js')}}"></script>
+                                  <script type="text/javascript">
+                                    $(document).ready(function(){
+
+                                      $('#example2').dataTable({
+
+                                        "language": {
+                                            "sProcessing":     "Procesando...",
+                                            "sLengthMenu":     "Mostrar _MENU_ proveedores",
+                                            "sZeroRecords":    "No se encontraron resultados",
+                                            "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+                                            "sInfo":           "Mostrando proveedores del _START_ al _END_ de un total de _TOTAL_ proveedores",
+                                            "sInfoEmpty":      "Mostrando proveedores del 0 al 0 de un total de 0 proveedores",
+                                            "sInfoFiltered":   "(filtrado de un total de _MAX_ proveedores)",
+                                            "sInfoPostFix":    "",
+                                            "sSearch":         "Buscar:",
+                                            "sUrl":            "",
+                                            "sInfoThousands":  ",",
+                                            "sLoadingRecords": "Cargando...",
+                                            "oPaginate": {
+                                                "sFirst":    "Primero",
+                                                "sLast":     "Último",
+                                                "sNext":     "Siguiente",
+                                                "sPrevious": "Anterior"
+                                            },
+                                            "oAria": {
+                                                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                                            },
+                                            "buttons": {
+                                                "copy": "Copiar",
+                                                "colvis": "Visibilidad"
+                                            }
+                                          }
+
+                                      });
+
+                                    });
+                                  </script>
+
+                                </div>
+                              </div>
+                            </div> 
+
                 </div>
             </div>
-        </div>  
-
+        </div>
     </div>
+                    
+
+  </div>  
 </div>
 @endsection
