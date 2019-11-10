@@ -14,9 +14,20 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-       $usuarios = DB::table('users')->select(DB::raw('id as Id'),DB::raw('email as "Email"'),DB::raw('name as "Nombre"'))->get();
+       $usuarios = DB::table('users')->select(
+        DB::raw('id as Id'),
+        DB::raw('email as "Email"'),
+        DB::raw('name as Name'),
+        DB::raw('rol as Rol'),
+        DB::raw('cedula as Cedula'),
+        DB::raw('NIT as NIT'),
+        DB::raw('telefono as Telefono'),
+        DB::raw('direccion as Direccion')
+       ->get();
 
-        return view('crudusuarios',compact('proveedores'));
+       $roles = DB::table('users')->get();
+
+        return view('crudusuarios',compact('usuarios','roles'));
     }
 
     /**
@@ -27,7 +38,18 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new User;
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->cedula = $request->cedula;
+        $usuario->telefono = $request->telefono;
+        $usuario->direccion = $request->direccion;
+        $usuario->NIT = $request->NIT;
+        $usuario->password = $request->password;
+        $usuario->rol = $request->rol;
+        $usuario->save();
+
+        return redirect()->route('usuarios')->with('success', 'Usuario registrado');
     }
 
     /**
@@ -38,7 +60,18 @@ class UsuariosController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        $usuario = User::findOrFail($request->id);
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->cedula = $request->cedula;
+        $usuario->telefono = $request->telefono;
+        $usuario->direccion = $request->direccion;
+        $usuario->NIT = $request->NIT;
+        $usuario->password = $request->password;
+        $usuario->rol = $request->rol;
+        $usuario->save();
+
+        return back()->with('success', 'Usuario actualizado');
     }
 
     /**
@@ -49,6 +82,7 @@ class UsuariosController extends Controller
      */
     public function destroy(Request $request)
     {
-        //
+        User::findOrFail($request->id)->delete();
+        return redirect()->route('usuarios')->with('success', 'Usuario eliminado');
     }
 }

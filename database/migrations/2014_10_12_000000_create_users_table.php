@@ -24,19 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('direccion')->nullable();
             $table->integer('NIT')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('rol')->default('cliente');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
 
-        User::create([
-            'id' => 0,
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'rol' => 'administrador',
-            'password' => Hash::make('1234')
-        ]);
+        
     }
 
     /**

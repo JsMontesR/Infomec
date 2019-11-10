@@ -48,7 +48,12 @@
                                                             <tbody>
                                                                @foreach($servicios as $servicio)
                                                                 <tr>
-                                                                    <td align="center"><input id="{{$servicio->Id}}" type="radio" name="propietario"></td>
+                                                                    <td align="center">
+                                                                        <a id="{{$servicio->Id}}" class="btn btn-secondary text-white">
+                                                                            <em class="fas fa-angle-up"></em>
+                                                                            Cargar
+                                                                        </a>
+                                                                    </td>
                                                                     <script type="text/javascript">
                                                                       
                                                                         var cambiar = function(){
@@ -244,7 +249,12 @@
                                                             <tbody>
                                                                @foreach($revisiones as $revision)
                                                                 <tr>
-                                                                    <td align="center"><input id="{{$revision->Id}}r" type="radio" name="revisiones"></td>
+                                                                    <td align="center">
+                                                                        <a id="{{$revision->Id}}r" class="btn btn-secondary text-white" href="#page-top">
+                                                                            <em class="fas fa-angle-up"></em> 
+                                                                            Ver
+                                                                        </a>
+                                                                    </td>
                                                                     <script type="text/javascript">
                                                                       
                                                                         var cambiar = function(){

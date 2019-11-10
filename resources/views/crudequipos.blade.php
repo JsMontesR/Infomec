@@ -79,7 +79,7 @@
                                                                 
                                                                @foreach($usuarios as $registro)
                                                                 <tr>
-                                                                    <td align="center"><input id={{$registro->Email}} type="radio" name="formu"></td>
+                                                                    <td align="center"><a id="{{$registro->Email}}" class="btn btn-secondary text-white"><em class="fas fa-angle-up"></em> Cargar</a></td>
                                                                 <script type="text/javascript">
                                                                   
                                                                     var cambiar = function(){
@@ -250,7 +250,7 @@
                                                         <tbody>
                                                            @foreach($registros as $registro)
                                                             <tr>
-                                                                <td align="center"><input id="{{$registro->Id}}" type="radio" name="propietario"></td>
+                                                                <td align="center"><a id="{{$registro->Id}}" class="btn btn-secondary text-white" href="#page-top"><em class="fas fa-angle-up"></em> Ver</a></td>
                                                                 <script type="text/javascript">
                                                                   
                                                                     var cambiar = function(){

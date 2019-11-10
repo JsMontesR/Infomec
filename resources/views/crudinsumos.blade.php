@@ -109,7 +109,7 @@
                                             <tbody>
                                                @foreach($proveedores as $registro)
                                                 <tr>
-                                                    <td align="center"><input id="{{$registro->Id}}" type="radio"></td>
+                                                    <td align="center"><a id="{{$registro->Id}}" class="btn btn-secondary text-white"><em class="fas fa-angle-up"></em> Cargar</a></td>
                                                     <script type="text/javascript">
                                                       
                                                         var cambiar = function(){
@@ -284,7 +284,7 @@
                                             <tbody>
                                                @foreach($insumos as $registro)
                                                 <tr>
-                                                    <td align="center"><input id="{{$registro->Id}}" type="radio"></td>
+                                                    <td align="center"><a id="{{$registro->Id}}p" class="btn btn-secondary text-white" href="#page-top"><em class="fas fa-angle-up"></em> Ver</a></td>
                                                     <script type="text/javascript">
 
                                                         var cambiar = function(){
@@ -297,7 +297,7 @@
                                                             document.getElementById('precioVenta').value = {!!json_encode($registro->{'Precio de venta'})!!};
 
                                                         };
-                                                        var input = document.getElementById({!!json_encode($registro->Id)!!});
+                                                        var input = document.getElementById({!!json_encode($registro->Id)!!}+"p");
                                                         input.addEventListener('click',cambiar);
                                                       
                                                         

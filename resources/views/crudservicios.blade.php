@@ -68,7 +68,12 @@
                                             <tbody>
                                                @foreach($equipos as $equipo)
                                                 <tr>
-                                                    <td align="center"><input id="{{$equipo->Id}}e" type="radio"></td>
+                                                    <td align="center">
+                                                        <a id="{{$equipo->Id}}e" class="btn btn-secondary text-white">
+                                                            <em class="fas fa-angle-up"></em>
+                                                            Cargar
+                                                        </a>
+                                                    </td>
                                                     <script type="text/javascript">
                                                       
                                                         var cambiar = function(){
@@ -232,7 +237,13 @@
                                         <tbody>
                                            @foreach($servicios as $servicio)
                                             <tr>
-                                                <td align="center"><input id="{{$servicio->Id}}" type="radio" name="propietario"></td>
+                                                <td align="center">
+                                                    <a id="{{$servicio->Id}}" class="btn btn-secondary text-white" href="#page-top">
+                                                        <em class="fas fa-angle-up"></em> 
+                                                        Ver
+                                                    </a>
+                                                </td>
+
                                                 <script type="text/javascript">
                                                     
                                                     var cambiar = function(){
