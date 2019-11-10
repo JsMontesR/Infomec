@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('cedula')->nullable();
             $table->bigInteger('telefono')->nullable();
             $table->string('direccion')->nullable();
-            $table->bigInteger('NIT')->nullable();
+            $table->string('NIT')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

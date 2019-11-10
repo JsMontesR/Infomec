@@ -12,10 +12,10 @@ class UsuariosController extends Controller
 
     public $validationRules = [
             'nombre' => 'required',
-            'precio_de_compra' => 'required|integer',
-            'utilidad' => 'required|integer',
-            'cantidad' => 'required|integer',
-            'precio_de_venta' => 'numeric|required',
+            'email' => 'required|email',
+            'cedula' => 'nullable|integer',
+            'telefono' => 'nullable|integer',
+            'dire' => 'numeric|required',
             'id_del_proveedor' => 'integer|required',
         ];
 

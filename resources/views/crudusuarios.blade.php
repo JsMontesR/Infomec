@@ -23,7 +23,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Id:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="iduser">
+                                <input readonly="readonly" id="id" class="form-control @error('id') is-invalid @enderror" value="{{old('id')}}" name="id" required autocomplete="iduser">
+                                @error('id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -31,7 +36,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Nombre:</label>
 
                             <div class="col-md-8">
-                                <input id="name" class="form-control" name="name" required autocomplete="name">
+                                <input id="name" class="form-control @error('id') is-invalid @enderror" value="{{old('id')}}" name="name" required autocomplete="name">
+                                @error('id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -39,7 +49,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Correo electrónico:</label>
 
                             <div class="col-md-8">
-                                <input id="email" class="form-control" name="email" required autocomplete="email">
+                                <input id="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" name="email" required autocomplete="email">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -47,7 +62,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Cédula</label>
 
                             <div class="col-md-8">
-                                <input  id="cedula" class="form-control" name="cedula" required autocomplete="cedula">
+                                <input  id="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{old('cedula')}}" name="cedula" required autocomplete>
+                                @error('cedula')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -55,7 +75,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Teléfono:</label>
 
                             <div class="col-md-8">
-                                <input id="telefono" class="form-control" name="telefono" required autocomplete="telefono">
+                                <input id="telefono" class="form-control @error('telefono') is-invalid @enderror" value="{{old('telefono')}}" name="telefono" required autocomplete>
+                                @error('telefono')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -63,7 +88,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Dirección:</label>
 
                             <div class="col-md-8">
-                                <input  id="direccion" class="form-control" name="direccion" required autocomplete="direccion">
+                                <input  id="direccion" class="form-control" name="direccion" required autocomplete>
                             </div>
                         </div>
 
@@ -71,7 +96,12 @@
                             <label class="col-md-4 col-form-label text-md-left">NIT:</label>
 
                             <div class="col-md-8">
-                                <input  id="NIT" class="form-control" name="NIT" required autocomplete="NIT" >
+                                <input  id="NIT" class="form-control @error('NIT') is-invalid @enderror" value="{{old('NIT')}}" name="NIT" required autocomplete>
+                                @error('NIT')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -80,7 +110,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Contraseña:</label>
 
                             <div class="col-md-8">
-                                <input  id="proveedor_id" type="password" class="form-control" name="password" required autocomplete="current-password">
+                                <input  id="password" type="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -90,7 +125,7 @@
                             <div class="col-md-8">
                                 <select id="rol" name="rol" class="form-control" style="text-transform: capitalize">
                                  @foreach($roles as $rol)
-                                    @if($rol->rol === 'administrador')
+                                    @if($rol->rol === 'cliente')
                                         <option value="{{$rol->rol}}" selected="">{{$rol->rol}}</option>
                                     @else
                                         <option value="{{$rol->rol}}">{{$rol->rol}}</option>
