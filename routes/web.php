@@ -23,7 +23,7 @@ Route::get('/diagnostica', 'DiagnosticaController@index')->name('diagnostica')->
 
 Route::post('/diagnostica', 'DiagnosticaController@predict')->name('diagnostica.predict')->middleware('auth');
 
-Route::get('/reportes', 'ReportesController@index')->name('reportes')->middleware('auth')->middleware('onlyadmin');
+Route::get('/reportes', 'ReportesController@index')->name('reportes')->middleware('auth')->middleware('onlyadminortech');
 
 //Configuración usuaria
 

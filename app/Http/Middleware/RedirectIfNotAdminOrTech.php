@@ -15,7 +15,7 @@ class RedirectIfNotAdminOrTech
      */
     public function handle($request, Closure $next)
     {
-        if((auth()->user()->rol === 'administrador') || auth()->user()->rol === 'tecnico'){
+        if((auth()->user()->rol === 'administrador') || (auth()->user()->rol === 'tecnico')){
             return $next($request);
         }
 
