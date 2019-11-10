@@ -88,7 +88,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Dirección:</label>
 
                             <div class="col-md-8">
-                                <input  id="direccion" class="form-control" name="direccion" required autocomplete>
+                                <input  id="direccion" class="form-control " name="direccion" value="{{old('direccion')}}" required autocomplete>
                             </div>
                         </div>
 
@@ -96,12 +96,7 @@
                             <label class="col-md-4 col-form-label text-md-left">NIT:</label>
 
                             <div class="col-md-8">
-                                <input  id="NIT" class="form-control @error('NIT') is-invalid @enderror" value="{{old('NIT')}}" name="NIT" required autocomplete>
-                                @error('NIT')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <input  id="NIT" class="form-control" value="{{old('NIT')}}" name="NIT" required autocomplete>
                             </div>
                         </div>
 
@@ -123,7 +118,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Rol:</label>
 
                             <div class="col-md-8">
-                                <select id="rol" name="rol" class="form-control" style="text-transform: capitalize">
+                                <select id="rol" name="rol" class="form-control" style="text-transform: capitalize" value="{{old('rol')}}">
                                  @foreach($roles as $rol)
                                     @if($rol->rol === 'cliente')
                                         <option value="{{$rol->rol}}" selected="">{{$rol->rol}}</option>

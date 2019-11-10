@@ -15,8 +15,8 @@ class UsuariosController extends Controller
             'email' => 'required|email',
             'cedula' => 'nullable|integer',
             'telefono' => 'nullable|integer',
-            'dire' => 'numeric|required',
-            'id_del_proveedor' => 'integer|required',
+            'NIT' => 'required',
+            'password' => ['required', 'string', 'min:8']
         ];
 
     public $validationIdRule = ['id' => 'required|integer'];

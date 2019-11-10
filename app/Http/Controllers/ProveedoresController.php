@@ -13,7 +13,7 @@ class ProveedoresController extends Controller
             'nombre' => 'required',
             'email' => 'nullable|email',
             'telefono' => 'nullable|integer',
-            'NIT' => 'nullable|integer',
+            'NIT' => 'nullable',
         ];
 
     public $validationIdRule = ['id' => 'required|integer'];
