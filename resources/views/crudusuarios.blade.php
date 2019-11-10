@@ -23,7 +23,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Id:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="id">
+                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="iduser">
                             </div>
                         </div>
 
@@ -31,204 +31,112 @@
                             <label class="col-md-4 col-form-label text-md-left">Nombre:</label>
 
                             <div class="col-md-8">
-                                <input id="nombre" class="form-control" name="nombre" required autocomplete="nombre">
+                                <input id="name" class="form-control" name="name" required autocomplete="name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-left">Correo electrónico:</label>
+
+                            <div class="col-md-8">
+                                <input id="email" class="form-control" name="email" required autocomplete="email">
                             </div>
                         </div>
 
                          <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Precio de compra:</label>
+                            <label class="col-md-4 col-form-label text-md-left">Cédula</label>
 
                             <div class="col-md-8">
-                                <input  id="precioCompra" class="form-control" name="precioCompra" required autocomplete="precioCompra" onkeyup="calcularPrecio()">
+                                <input  id="cedula" class="form-control" name="cedula" required autocomplete="cedula">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Utilidad(%):</label>
+                            <label class="col-md-4 col-form-label text-md-left">Teléfono:</label>
 
                             <div class="col-md-8">
-                                <input id="utilidad" class="form-control" name="utilidad" required autocomplete="utilidad" onkeyup="calcularPrecio()">
+                                <input id="telefono" class="form-control" name="telefono" required autocomplete="telefono">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Cantidad en stock:</label>
+                            <label class="col-md-4 col-form-label text-md-left">Dirección:</label>
 
                             <div class="col-md-8">
-                                <input  id="cantidad" class="form-control" name="cantidad" required autocomplete="cantidad">
+                                <input  id="direccion" class="form-control" name="direccion" required autocomplete="direccion">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Precio de venta:</label>
+                            <label class="col-md-4 col-form-label text-md-left">NIT:</label>
 
                             <div class="col-md-8">
-                                <input  id="precioVenta" class="form-control" name="precioVenta" required autocomplete="precioVenta" >
+                                <input  id="NIT" class="form-control" name="NIT" required autocomplete="NIT" >
                             </div>
                         </div>
 
-                        <script type="text/javascript">
-                            
-                             function calcularPrecio(){
-                                var precioCompra = parseInt(document.getElementById('precioCompra').value,10);
-                                var utilidad = parseInt(document.getElementById('utilidad').value,10);
-                                if(!isNaN(precioCompra) && !isNaN(utilidad)){
-                                    document.getElementById('precioVenta').value = precioCompra * (1 + utilidad / 100);
-                                }
-                                    
-                            }
-                            
-
-                        </script>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-left">Proveedor:</label>
+                            <label class="col-md-4 col-form-label text-md-left">Contraseña:</label>
 
                             <div class="col-md-8">
-                                <input  id="proveedor_id" readonly="readonly" class="form-control" name="proveedor_id" required autocomplete="proveedor_id">
+                                <input  id="proveedor_id" type="password" class="form-control" name="password" required autocomplete="current-password">
                             </div>
                         </div>
 
-                        
-                            <div class="card mb-3">     
-                              <div class="card-body">
-                                <div class="table-responsive">
-                                  <table class="table table-bordered" id="example" width="100%" cellspacing="0">
-                                    @if(!$proveedores->isEmpty())
-                                            <thead>
-                                              <tr>
-                                                <th>Seleccionar</th>
-                                                @foreach ($proveedores->get(0) as $key => $value) 
-                                                    @if($key !== 'Descripcion')
-                                                    <th>{{$key}}</th>
-                                                    @endif
-                                                @endforeach
-                                                
-                                              </tr>       
-                                            </thead>
-                                            <tbody>
-                                               @foreach($proveedores as $registro)
-                                                <tr>
-                                                    <td align="center"><input id="{{$registro->Id}}" type="radio"></td>
-                                                    <script type="text/javascript">
-                                                      
-                                                        var cambiar = function(){
-                                                            document.getElementById('proveedor_id').value = {!!json_encode($registro->Id)!!};
-                                                        };
-                                                        var input = document.getElementById({!!json_encode($registro->Id)!!});
-                                                        input.addEventListener('click',cambiar);
-                                                        
-                                                    </script>
-                                                    @foreach ($registro as $key => $value) 
-                                                        @if($key !== 'Descripcion')
-                                                        <td>{{ $value }}</td>
-                                                        @endif
-                                                    @endforeach
-                                                    
-                                                </tr>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-left">Rol:</label>
 
-                                                @endforeach
-                                            </tbody>
-                                            <tfoot>
-                                              <tr>
-                                                <th>Seleccionar</th>
-                                                @foreach ($proveedores[0] as $key => $value) 
-                                                    @if($key !== 'Descripcion')
-                                                    <th>{{$key}}</th>
-                                                    @endif
-                                                @endforeach
-                                              </tr>
-                                            </tfoot>
+                            <div class="col-md-8">
+                                <select id="rol" name="rol" class="form-control" style="text-transform: capitalize">
+                                 @foreach($roles as $rol)
+                                    @if($rol->rol === 'administrador')
+                                        <option value="{{$rol->rol}}" selected="">{{$rol->rol}}</option>
                                     @else
-                                      <h3 align="center">No hay proveedores disponibles, intentelo más tarde</h3>
+                                        <option value="{{$rol->rol}}">{{$rol->rol}}</option>
                                     @endif
-                                  </table>
-                                  
-                                  <script type="text/javascript" src="{{asset('js/spanishtable.js')}}"></script>
-                                  <script type="text/javascript">
-                                    $(document).ready(function(){
-
-                                      $('#example').dataTable({
-
-                                        "language": {
-                                            "sProcessing":     "Procesando...",
-                                            "sLengthMenu":     "Mostrar _MENU_ proveedores",
-                                            "sZeroRecords":    "No se encontraron resultados",
-                                            "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
-                                            "sInfo":           "Mostrando proveedores del _START_ al _END_ de un total de _TOTAL_ proveedores",
-                                            "sInfoEmpty":      "Mostrando proveedores del 0 al 0 de un total de 0 proveedores",
-                                            "sInfoFiltered":   "(filtrado de un total de _MAX_ proveedores)",
-                                            "sInfoPostFix":    "",
-                                            "sSearch":         "Buscar:",
-                                            "sUrl":            "",
-                                            "sInfoThousands":  ",",
-                                            "sLoadingRecords": "Cargando...",
-                                            "oPaginate": {
-                                                "sFirst":    "Primero",
-                                                "sLast":     "Último",
-                                                "sNext":     "Siguiente",
-                                                "sPrevious": "Anterior"
-                                            },
-                                            "oAria": {
-                                                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                                            },
-                                            "buttons": {
-                                                "copy": "Copiar",
-                                                "colvis": "Visibilidad"
-                                            }
-                                          }
-
-                                      });
-
-                                    });
-                                  </script>
-
-                                </div>
-                              </div>
-                                            
-
+                                 @endforeach
+                                </select>
+                            </div>
                         </div>
 
                         </div>
 
                         <div align="center">
-
                            
-
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarInsumo()" />
+                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarUsuario()" />
 
-                            <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarInsumo()" />
+                            <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarUsuario()" />
 
                             </div>
                             <br>
                             <div class="btn-group col-md">
                             <input type="button" value="Limpiar" class="btn btn-secondary" onclick= "limpiarCampos()" />
                             
-                            <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarInsumo()" />
+                            <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarUsuario()" />
                             </div>
                              <script type="text/javascript">
                                 
                             
-                                function registrarInsumo(){
+                                function registrarUsuario(){
 
-                                    document.form1.action = '{{ route('insumos.store') }}';
+                                    document.form1.action = '{{ route('usuarios.store') }}';
                                     document.form1.submit();
                                 }
 
-                                function modificarInsumo(){
+                                function modificarUsuario(){
 
-                                    document.form1.action = '{{ route('insumos.update') }}';
+                                    document.form1.action = '{{ route('usuarios.update') }}';
                                     document.form1.submit();
                                 }
 
-                                function eliminarInsumo(){
+                                function eliminarUsuario(){
                                     var opcion = confirm("¿Está seguro que desea eliminar el insumo seleccionado?");
                                     if(opcion){
                                         var valor = document.getElementById('id').value;
-                                        document.form1.action = '{{ route('insumos.delete') }}';    
+                                        document.form1.action = '{{ route('usuarios.delete') }}';    
                                         document.form1.submit();
                                     }
                                     
@@ -236,12 +144,13 @@
 
                                 function limpiarCampos(){
                                             document.getElementById('id').value = "";
-                                            document.getElementById('nombre').value = "";
-                                            document.getElementById('proveedor_id').value = "";
-                                            document.getElementById('precioCompra').value = "";
-                                            document.getElementById('cantidad').value = "";
-                                            document.getElementById('utilidad').value = "";
-                                            document.getElementById('precioVenta').value = "";
+                                            document.getElementById('name').value = "";
+                                            document.getElementById('email').value = "";
+                                            document.getElementById('cedula').value = "";
+                                            document.getElementById('telefono').value = "";
+                                            document.getElementById('direccion').value = "";
+                                            document.getElementById('NIT').value = "";
+                                            document.getElementById('password').value = "";
                                         }
 
                             </script>
@@ -264,49 +173,53 @@
             <div class="row justify-content-center">
                 <div class="col-md">
                     <div class="card">
-                        <div class="card-header" style="font-size:20px" align="center">Insumos registrados</div>
+                        <div class="card-header" style="font-size:20px" align="center">Usuarios registrados</div>
                             <div class="card mb-3">     
                               <div class="card-body">
                                 <div class="table-responsive">
                                   <table class="table table-bordered" id="example2" width="100%" cellspacing="0">
-                                    @if(!$insumos->isEmpty())
+                                    @if(!$usuarios->isEmpty())
                                             <thead>
                                               <tr>
                                                 <th>Seleccionar</th>
-                                                @foreach ($insumos->get(0) as $key => $value) 
-                                                    @if($key !== 'Descripcion')
+                                                @foreach ($usuarios->get(0) as $key => $value) 
+                                                   
                                                     <th>{{$key}}</th>
-                                                    @endif
+                                                    
                                                 @endforeach
                                                 
                                               </tr>       
                                             </thead>
                                             <tbody>
-                                               @foreach($insumos as $registro)
+                                               @foreach($usuarios as $registro)
                                                 <tr>
-                                                    <td align="center"><input id="{{$registro->Id}}" type="radio"></td>
+                                                    <td align="center">
+                                                        <a id="{{$registro->Id}}" class="btn btn-secondary text-white" href="#page-top">
+                                                            <em class="fas fa-angle-up"></em> 
+                                                            Ver
+                                                        </a>
+                                                    </td>
                                                     <script type="text/javascript">
 
                                                         var cambiar = function(){
                                                             document.getElementById('id').value = {!!json_encode($registro->Id)!!};
-                                                            document.getElementById('nombre').value = {!!json_encode($registro->Nombre)!!};
-                                                            document.getElementById('proveedor_id').value = {!!json_encode($registro->Proveedor)!!};
-                                                            document.getElementById('precioCompra').value = {!!json_encode($registro->{'Precio de compra'})!!};
-                                                            document.getElementById('cantidad').value = {!!json_encode($registro->Cantidad)!!};
-                                                            document.getElementById('utilidad').value = {!!json_encode($registro->Utilidad)!!};
-                                                            document.getElementById('precioVenta').value = {!!json_encode($registro->{'Precio de venta'})!!};
+                                                            document.getElementById('name').value = {!!json_encode($registro->Name)!!};
+                                                            document.getElementById('email').value = {!!json_encode($registro->Email)!!};
+                                                            document.getElementById('rol').value = {!!json_encode($registro->Rol)!!};
+                                                            document.getElementById('cedula').value = {!!json_encode($registro->Cedula)!!};
+                                                            document.getElementById('NIT').value = {!!json_encode($registro->NIT)!!};
+                                                            document.getElementById('telefono').value = {!!json_encode($registro->Telefono)!!};
+                                                            document.getElementById('direccion').value = {!!json_encode($registro->Direccion)!!};
 
                                                         };
                                                         var input = document.getElementById({!!json_encode($registro->Id)!!});
                                                         input.addEventListener('click',cambiar);
-                                                      
-                                                        
                                                         
                                                     </script>
                                                     @foreach ($registro as $key => $value) 
-                                                        @if($key !== 'Descripcion')
+                                                        
                                                         <td>{{ $value }}</td>
-                                                        @endif
+                                                        
                                                     @endforeach
                                                     
                                                 </tr>
@@ -316,16 +229,16 @@
                                             <tfoot>
                                               <tr>
                                                 <th>Seleccionar</th>
-                                                @foreach ($insumos[0] as $key => $value) 
-                                                    @if($key !== 'Descripcion')
+                                                @foreach ($usuarios[0] as $key => $value) 
+                                                    
                                                     <th>{{$key}}</th>
-                                                    @endif
+                                                    
                                                 @endforeach
                                                 
                                               </tr>
                                             </tfoot>
                                     @else
-                                      <h3 align="center">No hay insumos disponibles, intentelo más tarde</h3>
+                                      <h3 align="center">No hay usuarios disponibles, intentelo más tarde</h3>
                                     @endif
                                   </table>
                                   

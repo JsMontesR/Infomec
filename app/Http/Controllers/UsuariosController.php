@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 
 class UsuariosController extends Controller
 {
@@ -22,10 +24,10 @@ class UsuariosController extends Controller
         DB::raw('cedula as Cedula'),
         DB::raw('NIT as NIT'),
         DB::raw('telefono as Telefono'),
-        DB::raw('direccion as Direccion')
+        DB::raw('direccion as Direccion'))
        ->get();
 
-       $roles = DB::table('users')->get();
+        $roles = DB::table('roles')->get();
 
         return view('crudusuarios',compact('usuarios','roles'));
     }
@@ -45,7 +47,7 @@ class UsuariosController extends Controller
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;
         $usuario->NIT = $request->NIT;
-        $usuario->password = $request->password;
+        $usuario->password = Hash::make($request->password);
         $usuario->rol = $request->rol;
         $usuario->save();
 
@@ -67,7 +69,7 @@ class UsuariosController extends Controller
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;
         $usuario->NIT = $request->NIT;
-        $usuario->password = $request->password;
+        $usuario->password = Hash::make($request->password);
         $usuario->rol = $request->rol;
         $usuario->save();
 

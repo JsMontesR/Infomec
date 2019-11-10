@@ -94,7 +94,7 @@ Route::post('/actualizarProveedores','ProveedoresController@update')->name('prov
 
 ////CRUD Clientes
 
-Route::get('/usuarios','ProveedoresController@index')->name('usuarios');
+Route::get('/usuarios','UsuariosController@index')->name('usuarios');
 
 Route::post('/registrarUsuarios','UsuariosController@store')->name('usuarios.store');
 
