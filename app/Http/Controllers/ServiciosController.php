@@ -10,12 +10,8 @@ class ServiciosController extends Controller
 {
 
     public $validationRules = [
-            'nombre' => 'required',
-            'precio_de_compra' => 'required|integer',
-            'utilidad' => 'required|integer',
-            'cantidad' => 'required|integer',
-            'precio_de_venta' => 'numeric|required',
-            'id_del_proveedor' => 'integer|required',
+            'problema_reportado' => 'required',
+            'id_del_equipo' => 'required|integer',
         ];
 
     public $validationIdRule = ['id' => 'required|integer'];
@@ -67,9 +63,9 @@ class ServiciosController extends Controller
         $request->validate($this->validationRules);
 
         $servicio = new Servicio;
-        $servicio->problemaReportado = $request->problemas;
+        $servicio->problemaReportado = $request->problema_reportado;
         $servicio->notas = $request->notas;
-        $servicio->equipo_id = $request->equipo_id;
+        $servicio->equipo_id = $request->id_del_equipo;
 
         $servicio->save();
 
@@ -89,9 +85,9 @@ class ServiciosController extends Controller
         $request->validate($this->validationRules);
         
         $servicio = Servicio::findOrFail($request->id);
-        $servicio->problemaReportado = $request->problemas;
+        $servicio->problemaReportado = $request->problema_reportado;
         $servicio->notas = $request->notas;
-        $servicio->equipo_id = $request->equipo_id;
+        $servicio->equipo_id = $request->id_del_equipo;
         $servicio->save();
 
         return back()->with('success', 'Orden de servicio actualizada');

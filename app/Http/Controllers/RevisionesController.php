@@ -11,7 +11,7 @@ class RevisionesController extends Controller
 
     public $validationRules = [
             'resultados_de_revision' => 'required',
-            'fecha_de_garantia' => 'required|after_or_equal:start_date'
+            'fecha_de_garantia' => 'nullable|after_or_equal:today'
         ];
 
     public $validationIdRule = ['id' => 'required|integer'];

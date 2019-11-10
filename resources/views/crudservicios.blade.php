@@ -23,7 +23,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Id:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="id">
+                                <input readonly="readonly" id="id" class="form-control @error('id') is-invalid @enderror" value="{{old('id')}}" name="id" required autocomplete="id">
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -31,7 +36,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Problema reportado:</label>
 
                             <div class="col-md-8">
-                                <input  id="problemas" class="form-control" name="problemas" required autocomplete="problemas">
+                                <input  id="problemas" class="form-control @error('problema_reportado') is-invalid @enderror" value="{{old('problema_reportado')}}" name="problema_reportado" required>
+                                @error('problema_reportado')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -39,7 +49,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Notas:</label>
 
                             <div class="col-md-8">
-                                <input id="notas" class="form-control" name="notas" required autocomplete="notas">
+                                <input id="notas" class="form-control" name="notas" required autocomplete>
                             </div>
                         </div>
 
@@ -47,8 +57,14 @@
                             <label class="col-md-4 col-form-label text-md-left">Equipo:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="equipo_id" class="form-control" name="equipo_id" required autocomplete="equipo_id">
+                                <input readonly="readonly" id="equipo_id" class="form-control @error('id_del_equipo') is-invalid @enderror" value="{{old('id_del_equipo')}}" name="id del equipo" required autocomplete>
+                                @error('id_del_equipo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
+                            
                         </div>
 
                         <div class="card mb-3">     
