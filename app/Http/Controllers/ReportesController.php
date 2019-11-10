@@ -14,13 +14,6 @@ class ReportesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    function __construct(){
-        $this->middleware('auth');
-        $this->middleware('checkadmin');
-    }
-
-
-
 
     public function index()
     {   

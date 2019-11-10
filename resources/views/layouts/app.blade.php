@@ -89,6 +89,7 @@
 
     @auth
     <ul class="sidebar navbar-nav">
+
       <li class="nav-item active">
         <a class="nav-link" href="{{route('home')}}">
           <em class="fas fa-fw fa-tachometer-alt"></em>
@@ -96,27 +97,17 @@
         </a>
       </li>
       
-      
-      @if(auth()->user()->rol === 'administrador')
+      @if(!(auth()->user()->rol === 'cliente'))
       <li class="nav-item">
         <a class="nav-link" href="{{route('servicios')}}">
           <em class="fas fa-fw fa-tags"></em>
           <span>Ordenes de servicio</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('revisiones')}}">
-          <em class="fas fa-fw fa-wrench"></em>
-          <span>Revisiones</span></a>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{{route('equipos')}}">
           <em class="fas fa-fw fa-desktop"></em>
           <span>Equipos</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('usuarios')}}">
-          <em class="fas fa-fw fa-address-card"></em>
-          <span>Usuarios</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('insumos')}}">
@@ -133,12 +124,43 @@
           <em class="fas fa-fw fa-users"></em>
           <span>Proveedores</span></a>
       </li>
+      
       @endif
+
+      @if((auth()->user()->rol === 'administrador') || (auth()->user()->rol === 'tecnico'))
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('revisiones')}}">
+          <em class="fas fa-fw fa-wrench"></em>
+          <span>Revisiones</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('reportes')}}">
+          <em class="fas fa-fw fa-clipboard"></em>
+          <span>Reportes</span></a>
+      </li>
+
+      @endif
+
+     
+
+      @if((auth()->user()->rol === 'administrador'))
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('usuarios')}}">
+          <em class="fas fa-fw fa-address-card"></em>
+          <span>Usuarios</span></a>
+      </li>
+        
+      @endif
+
       <li class="nav-item">
         <a class="nav-link" href="{{route('diagnostica')}}">
           <em class="fas fa-fw fa-chart-area"></em>
           <span>Haga su diagnóstico</span></a>
       </li>
+
       @endauth
     </ul>
 
