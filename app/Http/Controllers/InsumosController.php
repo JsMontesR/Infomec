@@ -70,11 +70,11 @@ class InsumosController extends Controller
         $insumo = new Insumo;
         $insumo->id = $request->id;
         $insumo->nombre = $request->nombre;
-        $insumo->proveedor_id = $request->Id_del_proveedor;
-        $insumo->precioCompra = $request->Precio_de_compra;
+        $insumo->proveedor_id = $request->id_del_proveedor;
+        $insumo->precioCompra = $request->precio_de_compra;
         $insumo->cantidad = $request->cantidad;
         $insumo->utilidad = $request->utilidad;
-        $insumo->precioVenta = $request->Precio_de_venta;
+        $insumo->precioVenta = $request->precio_de_venta;
 
         $insumo->save();
 
@@ -95,11 +95,11 @@ class InsumosController extends Controller
 
         $insumo = Insumo::findOrFail($request->id);
         $insumo->nombre = $request->nombre;
-        $insumo->proveedor_id = $request->Id_del_proveedor;
-        $insumo->precioCompra = $request->Precio_de_compra;
+        $insumo->proveedor_id = $request->id_del_proveedor;
+        $insumo->precioCompra = $request->precio_de_venta;
         $insumo->cantidad = $request->cantidad;
         $insumo->utilidad = $request->utilidad;
-        $insumo->precioVenta = $request->Precio_de_venta;
+        $insumo->precioVenta = $request->precio_de_venta;
 
         $insumo->save();
 
