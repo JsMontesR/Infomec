@@ -105,7 +105,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Contraseña:</label>
 
                             <div class="col-md-8">
-                                <input  id="password" type="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password">
+                                <input  id="password" type="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password" name="password">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

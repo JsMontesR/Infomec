@@ -11,12 +11,11 @@ class UsuariosController extends Controller
 {
 
     public $validationRules = [
-            'nombre' => 'required',
+            'name' => 'required',
             'email' => 'required|email',
             'cedula' => 'nullable|integer',
             'telefono' => 'nullable|integer',
-            'NIT' => 'required',
-            'password' => ['required', 'string', 'min:8']
+            'password' => 'required|string|min:8',
         ];
 
     public $validationIdRule = ['id' => 'required|integer'];
@@ -52,7 +51,8 @@ class UsuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
         $request->validate($this->validationRules);
 
         $usuario = new User;
