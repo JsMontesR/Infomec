@@ -8,6 +8,18 @@ use App\Servicio;
 
 class ServiciosController extends Controller
 {
+
+    public $validationRules = [
+            'nombre' => 'required',
+            'precio_de_compra' => 'required|integer',
+            'utilidad' => 'required|integer',
+            'cantidad' => 'required|integer',
+            'precio_de_venta' => 'numeric|required',
+            'id_del_proveedor' => 'integer|required',
+        ];
+
+    public $validationIdRule = ['id' => 'required|integer'];
+
     /**
      * Display a listing of the resource.
      *
@@ -44,16 +56,6 @@ class ServiciosController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -61,6 +63,9 @@ class ServiciosController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate($this->validationRules);
+
         $servicio = new Servicio;
         $servicio->problemaReportado = $request->problemas;
         $servicio->notas = $request->notas;
@@ -80,6 +85,9 @@ class ServiciosController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate($this->validationIdRule);
+        $request->validate($this->validationRules);
+        
         $servicio = Servicio::findOrFail($request->id);
         $servicio->problemaReportado = $request->problemas;
         $servicio->notas = $request->notas;
@@ -97,6 +105,8 @@ class ServiciosController extends Controller
      */
     public function destroy(Request $request)
     {
+        $request->validate($this->validationIdRule);
+        
         Servicio::findOrFail($request->id)->delete();
         return redirect()->route('servicios')->with('success', 'Orden de servicio eliminada');
     }

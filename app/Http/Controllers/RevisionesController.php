@@ -8,6 +8,14 @@ use App\Revision;
 
 class RevisionesController extends Controller
 {
+
+    public $validationRules = [
+            'resultados_de_revision' => 'required',
+            'fecha_de_garantia' => 'required|after_or_equal:start_date'
+        ];
+
+    public $validationIdRule = ['id' => 'required|integer'];
+
     /**
      * Display a listing of the resource.
      *
@@ -52,11 +60,14 @@ class RevisionesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationIdRule);
+        $request->validate($this->validationRules);
+
         $revision = new Revision;
         $revision->id = $request->id;
-        $revision->resultadosRevision = $request->resultadosRevision;
+        $revision->resultadosRevision = $request->resultados_de_revision;
         $revision->notasRevision = $request->notasRevision;
-        $revision->fechaGarantia = $request->fechaGarantia;
+        $revision->fechaGarantia = $request->fecha_de_garantia;
 
         $revision->save();
 
@@ -72,11 +83,13 @@ class RevisionesController extends Controller
      */
     public function update(Request $request)
     {
-
+        $request->validate($this->validationIdRule);
+        $request->validate($this->validationRules);
+        
         $revision = Revision::findOrFail($request->id);
-        $revision->resultadosRevision = $request->resultadosRevision;
+        $revision->resultadosRevision = $request->resultados_de_revision;
         $revision->notasRevision = $request->notasRevision;
-        $revision->fechaGarantia = $request->fechaGarantia;
+        $revision->fechaGarantia = $request->fecha_de_garantia;
 
         $revision->save();
 
@@ -91,6 +104,8 @@ class RevisionesController extends Controller
      */
     public function destroy(Request $request)
     {
+        $request->validate($this->validationIdRule);
+        
         Revision::findOrFail($request->id)->delete();
         return redirect()->route('revisiones')->with('success', 'Revision eliminada');
     }

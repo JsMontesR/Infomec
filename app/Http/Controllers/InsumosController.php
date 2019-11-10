@@ -8,6 +8,18 @@ use App\Insumo;
 
 class InsumosController extends Controller
 {
+
+    public $validationRules = [
+            'nombre' => 'required',
+            'precio_de_compra' => 'required|integer',
+            'utilidad' => 'required|integer',
+            'cantidad' => 'required|integer',
+            'precio_de_venta' => 'required|numeric',
+            'id_del_proveedor' => 'required|numeric',
+        ];
+
+    public $validationIdRule = ['id' => 'required|integer'];
+
     /**
      * Display a listing of the resource.
      *
@@ -53,14 +65,16 @@ class InsumosController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationRules);
+
         $insumo = new Insumo;
         $insumo->id = $request->id;
         $insumo->nombre = $request->nombre;
-        $insumo->proveedor_id = $request->proveedor_id;
-        $insumo->precioCompra = $request->precioCompra;
+        $insumo->proveedor_id = $request->Id_del_proveedor;
+        $insumo->precioCompra = $request->Precio_de_compra;
         $insumo->cantidad = $request->cantidad;
         $insumo->utilidad = $request->utilidad;
-        $insumo->precioVenta = $request->precioVenta;
+        $insumo->precioVenta = $request->Precio_de_venta;
 
         $insumo->save();
 
@@ -75,13 +89,17 @@ class InsumosController extends Controller
      */
     public function update(Request $request)
     {
+
+        $request->validate($this->validationIdRule);
+        $request->validate($this->validationRules);
+
         $insumo = Insumo::findOrFail($request->id);
         $insumo->nombre = $request->nombre;
-        $insumo->proveedor_id = $request->proveedor_id;
-        $insumo->precioCompra = $request->precioCompra;
+        $insumo->proveedor_id = $request->Id_del_proveedor;
+        $insumo->precioCompra = $request->Precio_de_compra;
         $insumo->cantidad = $request->cantidad;
         $insumo->utilidad = $request->utilidad;
-        $insumo->precioVenta = $request->precioVenta;
+        $insumo->precioVenta = $request->Precio_de_venta;
 
         $insumo->save();
 
@@ -96,6 +114,9 @@ class InsumosController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        $request->validate($this->validationIdRule);
+
         Insumo::findOrFail($request->id)->delete();
         return redirect()->route('proveedores')->with('success', 'Insumo eliminado');
     }

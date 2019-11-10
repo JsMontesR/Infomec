@@ -23,7 +23,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Numero de orden de servicio:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="id">
+                                <input readonly="readonly" id="id" class="form-control @error('id') is-invalid @enderror" value="{{old('id')}}" name="id" required autocomplete="id">
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -139,7 +144,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Resultados revision:</label>
 
                             <div class="col-md-8">
-                                <input id="resultadosRevision" class="form-control" name="resultadosRevision" required autocomplete="resultadosRevision">
+                                <input id="resultadosRevision" class="form-control @error('resultados_de_revision') is-invalid @enderror" value="{{old('resultados_de_revision')}}" name="resultados de revision" required autocomplete="resultadosRevision">
+                                @error('resultados_de_revision')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -147,7 +157,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Notas revisión:</label>
 
                             <div class="col-md-8">
-                                <input  id="notasRevision" class="form-control" name="notasRevision" required autocomplete="notasRevision">
+                                <input  id="notasRevision" class="form-control" name="notasRevision" required autocomplete>
                             </div>
                         </div>
 
@@ -155,7 +165,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Fecha garantia:</label>
 
                             <div class="col-md-8">
-                                <input id="fechaGarantia" type="date" class="form-control" name="fechaGarantia" required autocomplete="fechaGarantia">
+                                <input id="fechaGarantia" type="date" class="form-control @error('fecha_de_garantia') is-invalid @enderror" value="{{old('fecha_de_garantia')}}" name="fecha de garantia" required autocomplete="fechaGarantia">
+                                @error('fecha_de_garantia')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

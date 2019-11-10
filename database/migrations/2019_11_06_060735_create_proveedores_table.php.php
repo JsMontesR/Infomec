@@ -17,7 +17,7 @@ class CreateProveedoresTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('email')->nullable();
-            $table->integer('telefono')->nullable();
+            $table->bigInteger('telefono')->nullable();
             $table->string('direccion')->nullable();
             $table->string('NIT')->nullable();
             $table->string('descripcion')->nullable();

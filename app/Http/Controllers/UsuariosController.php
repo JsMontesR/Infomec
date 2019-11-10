@@ -9,6 +9,19 @@ use DB;
 
 class UsuariosController extends Controller
 {
+
+    public $validationRules = [
+            'nombre' => 'required',
+            'precio_de_compra' => 'required|integer',
+            'utilidad' => 'required|integer',
+            'cantidad' => 'required|integer',
+            'precio_de_venta' => 'numeric|required',
+            'id_del_proveedor' => 'integer|required',
+        ];
+
+    public $validationIdRule = ['id' => 'required|integer'];
+
+
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +53,8 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationRules);
+
         $usuario = new User;
         $usuario->name = $request->name;
         $usuario->email = $request->email;
@@ -62,6 +77,9 @@ class UsuariosController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate($this->validationIdRule);
+        $request->validate($this->validationRules);
+        
         $usuario = User::findOrFail($request->id);
         $usuario->name = $request->name;
         $usuario->email = $request->email;
@@ -84,6 +102,8 @@ class UsuariosController extends Controller
      */
     public function destroy(Request $request)
     {
+        $request->validate($this->validationIdRule);
+        
         User::findOrFail($request->id)->delete();
         return redirect()->route('usuarios')->with('success', 'Usuario eliminado');
     }

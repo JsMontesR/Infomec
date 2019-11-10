@@ -1,0 +1,41 @@
+SonarQube plugins:
+  - SonarCSS 1.1.1.1010 (cssfamily)
+  - 3D Code Metrics 3.7 (citymodel)
+  - Svn 1.9.0.1295 (scmsvn)
+  - SonarScala 1.5.0.315 (sonarscala)
+  - SonarC# 7.15.0.8572 (csharp)
+  - SonarJava 5.14.0.18788 (java)
+  - LDAP 2.2.0.608 (ldap)
+  - SonarHTML 3.2.0.2082 (web)
+  - SonarFlex 2.5.1.1831 (flex)
+  - SonarXML 2.0.1.2020 (xml)
+  - SonarTS 1.9.0.3766 (typescript)
+  - SonarVB 7.15.0.8572 (vbnet)
+  - SonarPython 1.14.1.3143 (python)
+  - Code Smells 4.0.0 (smells)
+  - GitHub Authentication for SonarQube 1.5.0.870 (authgithub)
+  - JaCoCo 1.0.2.475 (jacoco)
+  - SonarGo 1.1.1.2000 (go)
+  - SonarKotlin 1.5.0.315 (kotlin)
+  - SonarJS 5.2.1.7778 (javascript)
+  - SonarRuby 1.5.0.315 (ruby)
+  - Git 1.8.0.1574 (scmgit)
+  - SAML 2.0 Authentication for SonarQube 1.1.0.181 (authsaml)
+  - SoftVis3D Sonar plugin 1.1.0 (softvis3d)
+  - SonarPHP 3.2.0.4868 (php)
+Global server settings:
+  - citymodel.license_cert.secured=******
+  - sonar.auth.github.enabled=false
+  - sonar.auth.github.loginStrategy=Unique
+  - sonar.core.id=BF41A1F2-AW234gs_pqy85ZxpUWiC
+  - sonar.core.startTime=2019-11-10T09:52:27-0500
+Project server settings:
+Project scanner properties:
+  - sonar.host.url=http://localhost:9000
+  - sonar.projectBaseDir=C:\laragon\www\infomec
+  - sonar.projectKey=Proyect
+  - sonar.projectName=Infomec
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=4.0.0.1744
+  - sonar.sourceEncoding=UTF-8
+  - sonar.working.directory=C:\laragon\www\infomec\.scannerwork

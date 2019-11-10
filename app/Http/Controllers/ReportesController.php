@@ -8,6 +8,7 @@ use DB;
 
 class ReportesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

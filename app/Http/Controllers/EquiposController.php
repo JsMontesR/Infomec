@@ -7,8 +7,19 @@ use App\User;
 use Illuminate\Http\Request;
 use DB;
 
+
+
 class EquiposController extends Controller
 {
+
+    public $validationRules = [
+            'email' => 'required|email',
+            'marca' => 'required',
+            'numeroSerie' => 'required'
+        ];
+
+    public $validationIdRule = ['id' => 'required|integer'];
+
     /**
      * Display a listing of the resource.
      *
@@ -40,17 +51,14 @@ class EquiposController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationRules);
 
         $equipo = new Equipo;
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
         $equipo->claveIngreso = $request->claveIngreso;
-        $equipo->user_email = $request->user_email;
+        $equipo->user_email = $request->email;
         $equipo->save();
-
-        // Equipo::create($request->all());
-
-        // User::findOrFail($request->user_email)->equipos()->save($equipo);
 
         return redirect()->route('equipos')->with('success', 'Equipo registrado');
     }
@@ -63,11 +71,16 @@ class EquiposController extends Controller
      */
     public function update(Request $request)
     {
+
+        $request->validate($this->validationIdRule);
+        $request->validate($this->validationRules);
+        
+
         $equipo = Equipo::findOrFail($request->id);
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
         $equipo->claveIngreso = $request->claveIngreso;
-        $equipo->user_email = $request->user_email;
+        $equipo->user_email = $request->email;
         $equipo->save();
 
         return back()->with('success', 'Equipo actualizado');
@@ -81,6 +94,7 @@ class EquiposController extends Controller
      */
     public function destroy(Request $request)
     {
+        $request->validate($this->validationIdRule);
         Equipo::findOrFail($request->id)->delete();
         return redirect()->route('equipos')->with('success', 'Equipo eliminado');
     }

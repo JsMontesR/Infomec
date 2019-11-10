@@ -8,6 +8,16 @@ use DB;
 
 class ProveedoresController extends Controller
 {
+
+    public $validationRules = [
+            'nombre' => 'required',
+            'email' => 'nullable|email',
+            'telefono' => 'nullable|integer',
+            'NIT' => 'nullable|integer',
+        ];
+
+    public $validationIdRule = ['id' => 'required|integer'];
+
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +49,8 @@ class ProveedoresController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationRules);
+
         $proveedor = new Proveedor;
         $proveedor->id = $request->id;
         $proveedor->nombre = $request->nombre;
@@ -61,6 +73,10 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request)
     {
+
+        $request->validate($this->validationIdRule);
+        $request->validate($this->validationRules);
+
         $proveedor = Proveedor::findOrFail($request->id);
         $proveedor->nombre = $request->nombre;
         $proveedor->email = $request->email;
@@ -82,6 +98,8 @@ class ProveedoresController extends Controller
      */
     public function destroy(Request $request)
     {
+        $request->validate($this->validationIdRule);
+        
         Proveedor::findOrFail($request->id)->delete();
         return redirect()->route('proveedores')->with('success', 'Proveedor eliminado');
     }

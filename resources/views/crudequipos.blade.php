@@ -23,7 +23,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Id:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="id">
+                                <input readonly="readonly" id="id" class="form-control @error('id') is-invalid @enderror" name="id" required autocomplete="idEquipo" value="{{old('id')}}">
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -31,7 +36,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Marca:</label>
 
                             <div class="col-md-8">
-                                <input id="marca" class="form-control" name="marca" required autocomplete="marca">
+                                <input id="marca" class="form-control @error('marca') is-invalid @enderror" name="marca" required autocomplete="marcaEquipo" value="{{old('marca')}}" autofocus>
+                                @error('marca')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -39,7 +49,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Serial:</label>
 
                             <div class="col-md-8">
-                                <input  id="numeroSerie" class="form-control" name="numeroSerie" required autocomplete="numeroSerie">
+                                <input  id="numeroSerie" class="form-control @error('numeroSerie') is-invalid @enderror" name="numeroSerie" required autocomplete="numeroSerie" value="{{old('numeroSerie')}}" autofocus>
+                                @error('numeroSerie')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -47,7 +62,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Clave ingreso:</label>
 
                             <div class="col-md-8">
-                                <input id="claveIngreso" class="form-control" name="claveIngreso" required autocomplete="claveIngreso">
+                                <input id="claveIngreso" class="form-control @error('claveIngreso') is-invalid @enderror" name="claveIngreso" required autocomplete="claveIngreso" value="{{old('claveIngreso')}}" autofocus>
+                                @error('claveIngreso')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -55,7 +75,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Propietario:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="user_email" class="form-control" name="user_email" required autocomplete="user_email">
+                                <input readonly="readonly" id="user_email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="user_email" value="{{old('email')}}" autofocus>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

@@ -23,7 +23,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Id:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="id">
+                                <input readonly="readonly" id="id" class="form-control @error('id') is-invalid @enderror" name="id" required autocomplete value="{{old('id')}}">
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -31,7 +36,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Nombre:</label>
 
                             <div class="col-md-8">
-                                <input id="nombre" class="form-control" name="nombre" required autocomplete="nombre">
+                                <input id="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{old('nombre')}}" name="nombre" required autocomplete >
+                                @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -39,7 +49,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Email:</label>
 
                             <div class="col-md-8">
-                                <input  id="email" class="form-control" name="email" type="email" required autocomplete="email">
+                                <input  id="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" name="email" type="email" required autocomplete>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -47,7 +62,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Teléfono:</label>
 
                             <div class="col-md-8">
-                                <input id="telefono" class="form-control" name="telefono" required autocomplete="telefono">
+                                <input id="telefono" class="form-control  @error('telefono') is-invalid @enderror" value="{{old('telefono')}}" name="telefono" required autocomplete>
+                                @error('telefono')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -55,7 +75,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Dirección:</label>
 
                             <div class="col-md-8">
-                                <input  id="direccion" class="form-control" name="direccion" required autocomplete="direccion">
+                                <input  id="direccion" class="form-control @error('direccion') is-invalid @enderror" value="{{old('direccion')}}" name="direccion" required autocomplete>
+                                @error('direccion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -63,7 +88,12 @@
                             <label class="col-md-4 col-form-label text-md-left">NIT:</label>
 
                             <div class="col-md-8">
-                                <input  id="NIT" class="form-control" name="NIT" required autocomplete="NIT">
+                                <input  id="NIT" class="form-control @error('NIT') is-invalid @enderror" value="{{old('NIT')}}" name="NIT" required autocomplete>
+                                @error('NIT')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -71,7 +101,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Descripción:</label>
 
                             <div class="col-md-8">
-                                <input  id="descripcion" class="form-control" name="descripcion" required autocomplete="descripcion">
+                                <input  id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" value="{{old('descripcion')}}" name="descripcion" required autocomplete>
+                                @error('descripcion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

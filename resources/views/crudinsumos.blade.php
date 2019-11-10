@@ -23,7 +23,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Id:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="id" class="form-control" name="id" required autocomplete="id">
+                                <input readonly="readonly" id="id" class="form-control @error('id') is-invalid @enderror" name="id" required autocomplete value="{{old('id')}}">
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -31,7 +36,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Nombre:</label>
 
                             <div class="col-md-8">
-                                <input id="nombre" class="form-control" name="nombre" required autocomplete="nombre">
+                                <input id="nombre" class="form-control @error('nombre') is-invalid @enderror" name="nombre" required autocomplete value="{{old('nombre')}}">
+                                 @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -39,7 +49,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Precio de compra:</label>
 
                             <div class="col-md-8">
-                                <input  id="precioCompra" class="form-control" name="precioCompra" required autocomplete="precioCompra" onkeyup="calcularPrecio()">
+                                <input  id="precioCompra" class="form-control @error("precio_de_compra") is-invalid @enderror" name="precio de compra" required autocomplete onkeyup="calcularPrecio()" value="{{old('precio_de_compra')}}">
+                                @error("precio_de_compra")
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -47,7 +62,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Utilidad(%):</label>
 
                             <div class="col-md-8">
-                                <input id="utilidad" class="form-control" name="utilidad" required autocomplete="utilidad" onkeyup="calcularPrecio()">
+                                <input id="utilidad" class="form-control @error('utilidad') is-invalid @enderror" name="utilidad" required autocomplete onkeyup="calcularPrecio()" value="{{old('utilidad')}}">
+                                @error('utilidad')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -55,7 +75,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Cantidad en stock:</label>
 
                             <div class="col-md-8">
-                                <input  id="cantidad" class="form-control" name="cantidad" required autocomplete="cantidad">
+                                <input  id="cantidad" class="form-control @error('cantidad') is-invalid @enderror" name="cantidad" required autocomplete value="{{old('cantidad')}}">
+                                @error('cantidad')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -63,7 +88,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Precio de venta:</label>
 
                             <div class="col-md-8">
-                                <input  id="precioVenta" class="form-control" name="precioVenta" required autocomplete="precioVenta" >
+                                <input  id="precioVenta" class="form-control @error('precio_de_venta') is-invalid @enderror" name="precio de venta" required autocomplete value="{{old('precio_de_venta')}}" >
+                                @error('precio_de_venta')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -85,7 +115,12 @@
                             <label class="col-md-4 col-form-label text-md-left">Proveedor:</label>
 
                             <div class="col-md-8">
-                                <input  id="proveedor_id" readonly="readonly" class="form-control" name="proveedor_id" required autocomplete="proveedor_id">
+                                <input  id="proveedor_id" readonly="readonly" class="form-control @error('id_del_proveedor') is-invalid @enderror" name="id del proveedor" required autocomplete value="{{old('id_del_proveedor')}}">
+                                @error('id_del_proveedor')
+                                    <span class="invalid-feedback" role="alert" >
+                                        <strong class="m_title" >{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
