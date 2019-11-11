@@ -164,8 +164,8 @@ class UserCanLoadPagesTest extends TestCase
     public function testUserCanLoadUsuariosPage()
     {
 
-        $user = actory(User::class)->create();
-        $user->rol = 'administrador';f
+        $user = factory(User::class)->create();
+        $user->rol = 'administrador';
 
         $this->actingAs($user)
                          ->withSession(['foo' => 'bar'])
