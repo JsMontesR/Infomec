@@ -103,7 +103,7 @@
                                 var precioCompra = parseInt(document.getElementById('precioCompra').value,10);
                                 var utilidad = parseInt(document.getElementById('utilidad').value,10);
                                 if(!isNaN(precioCompra) && !isNaN(utilidad)){
-                                    document.getElementById('precioVenta').value = precioCompra * (1 + utilidad / 100);
+                                    document.getElementById('precioVenta').value = Math.round(precioCompra * (1 + utilidad / 100));
                                 }
                                     
                             }

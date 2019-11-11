@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 align="center">Equipos</h1>
+<br>
+<h3 align="center">Página en construcción, ¡estamos haciendo nuestro mejor esfuerzo!</h1>
+    <div align="center">
+        <img src="construct.png">
+    </div>
+
+{{-- <h1 align="center">Equipos</h1>
 <br>
 
  @if(session()->has('success'))
@@ -143,5 +149,5 @@
         </div>  
 
     </div>
-</div>
+</div> --}}
 @endsection

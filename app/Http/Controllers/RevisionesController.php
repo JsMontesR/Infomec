@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Revision;
+use Illuminate\Validation\ValidationException;
 
 class RevisionesController extends Controller
 {
@@ -86,7 +87,10 @@ class RevisionesController extends Controller
         $request->validate($this->validationIdRule);
         $request->validate($this->validationRules);
         
-        $revision = Revision::findOrFail($request->id);
+        $revision = Revision::find($request->id);
+        if(is_null($revision)){
+            $this->throwNotFoundException();
+        }
         $revision->resultadosRevision = $request->resultados_de_revision;
         $revision->notasRevision = $request->notasRevision;
         $revision->fechaGarantia = $request->fecha_de_garantia;
@@ -106,7 +110,14 @@ class RevisionesController extends Controller
     {
         $request->validate($this->validationIdRule);
         
-        Revision::findOrFail($request->id)->delete();
+        Revision::find($request->id)->delete();
+        if(is_null($revision)){
+            $this->throwNotFoundException();
+        }
         return redirect()->route('revisiones')->with('success', 'Revision eliminada');
+    }
+
+    public function throwNotFoundException(){
+        throw ValidationException::withMessages(['id' => 'El id ingresado no existe.']);
     }
 }
