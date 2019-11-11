@@ -17,7 +17,7 @@ class CreateRevisionesTable extends Migration
             $table->bigIncrements('id');
             $table->string('resultadosRevision');
             $table->string('notasRevision')->nullable();
-            $table->date('fechaGarantia');
+            $table->date('fechaGarantia')->nullable();
             $table->timestamps();
         });
     }
