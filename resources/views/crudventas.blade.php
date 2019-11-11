@@ -4,6 +4,7 @@
 <br>
 <h3 align="center">Página en construcción, ¡estamos haciendo nuestro mejor esfuerzo!</h1>
     <div align="center">
+        <img src="construct.png" class="img-fluid" alt="Responsive image">
     </div>
 
 {{-- <h1 align="center">Equipos</h1>
