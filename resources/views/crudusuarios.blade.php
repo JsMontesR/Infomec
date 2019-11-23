@@ -36,8 +36,8 @@
                             <label class="col-md-4 col-form-label text-md-left">Nombre:</label>
 
                             <div class="col-md-8">
-                                <input id="name" class="form-control @error('id') is-invalid @enderror" value="{{old('id')}}" name="name" required autocomplete="name">
-                                @error('id')
+                                <input id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" name="name" required autocomplete="name">
+                                @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -96,7 +96,12 @@
                             <label class="col-md-4 col-form-label text-md-left">NIT:</label>
 
                             <div class="col-md-8">
-                                <input  id="NIT" class="form-control" value="{{old('NIT')}}" name="NIT" required autocomplete>
+                                <input id="NIT" class="form-control @error('NIT') is-invalid @enderror" value="{{old('NIT')}}" name="NIT" required autocomplete>
+                                @error('NIT')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -125,6 +130,13 @@
                                     @else
                                         <option value="{{$rol->rol}}">{{$rol->rol}}</option>
                                     @endif
+
+                                    <script type="text/javascript">
+                                        var value = {!!json_encode(old('rol'))!!};
+                                        if(value != null && value != "cliente"){
+                                            document.getElementById("rol").value = {!!json_encode(old('rol'))!!}
+                                        }
+                                    </script>
                                  @endforeach
                                 </select>
                             </div>
@@ -136,7 +148,7 @@
                            
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarUsuario()" />
+                            <input id="registrar" type="button" value="Registrar" class="btn btn-primary" onclick= "registrarUsuario()" />
 
                             <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarUsuario()" />
 
@@ -181,6 +193,7 @@
                                             document.getElementById('direccion').value = "";
                                             document.getElementById('NIT').value = "";
                                             document.getElementById('password').value = "";
+                                            document.getElementById('registrar').disabled = false;
                                         }
 
                             </script>
@@ -232,6 +245,7 @@
                                                     <script type="text/javascript">
 
                                                         var cambiar = function(){
+                                                            document.getElementById('registrar').disabled = true;
                                                             document.getElementById('id').value = {!!json_encode($registro->Id)!!};
                                                             document.getElementById('name').value = {!!json_encode($registro->Name)!!};
                                                             document.getElementById('email').value = {!!json_encode($registro->Email)!!};

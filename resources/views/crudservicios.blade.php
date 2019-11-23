@@ -173,7 +173,7 @@
 
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarServicio()" />
+                            <input id="registrar" type="button" value="Registrar" class="btn btn-primary" onclick= "registrarServicio()" />
 
                             <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarServicio()" />
 
@@ -213,6 +213,7 @@
                                             document.getElementById('problemas').value = "";
                                             document.getElementById('notas').value = "";
                                             document.getElementById('equipo_id').value = "";
+                                            document.getElementById('registrar').disabled = false;
                                         }
 
                             </script>
@@ -263,7 +264,7 @@
                                                 <script type="text/javascript">
                                                     
                                                     var cambiar = function(){
-
+                                                        document.getElementById('registrar').disabled = true;
                                                         document.getElementById('id').value = {!!json_encode($servicio->Id)!!};
                                                         document.getElementById('problemas').value = {!!json_encode($servicio->Problemas)!!};
                                                         document.getElementById('notas').value = {!!json_encode($servicio->Notas)!!};

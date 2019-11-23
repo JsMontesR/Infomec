@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Validation\ValidationException;
 use DB;
+use Validator;
 
 class UsuariosController extends Controller
 {
@@ -15,7 +17,7 @@ class UsuariosController extends Controller
             'email' => 'required|email',
             'cedula' => 'nullable|integer',
             'telefono' => 'nullable|integer',
-            'password' => 'required|string|min:8',
+            'password' => 'nullable|string|min:8',
         ];
 
     public $validationIdRule = ['id' => 'required|integer'];
@@ -61,12 +63,21 @@ class UsuariosController extends Controller
         $usuario->cedula = $request->cedula;
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;
-        $usuario->NIT = $request->NIT;
-        $usuario->password = Hash::make($request->password);
+        $this->validarYGuardarNIT($request,$usuario);
         $usuario->rol = $request->rol;
         $usuario->save();
 
         return redirect()->route('usuarios')->with('success', 'Usuario registrado');
+    }
+
+    public function validarYGuardarNIT(Request $request, User $usuario){
+        $NITvalidator = Validator::make($request->all(), ['NIT' => 'nullable|regex:/(?<![\w\d])[0-9]+-[0-9]+(?![\w\d])/']);
+        
+        if ($NITvalidator->fails()) {
+            throw ValidationException::withMessages(['NIT' => 'El NIT ingresado es incorrecto',]);
+        }else{       
+            $usuario->NIT = $request->NIT;
+        }
     }
 
     /**
@@ -86,8 +97,10 @@ class UsuariosController extends Controller
         $usuario->cedula = $request->cedula;
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;
-        $usuario->NIT = $request->NIT;
-        $usuario->password = Hash::make($request->password);
+        $this->validarYGuardarNIT($request,$usuario);
+        if($request->password != null){
+            $usuario->password = Hash::make($request->password);
+        }
         $usuario->rol = $request->rol;
         $usuario->save();
 

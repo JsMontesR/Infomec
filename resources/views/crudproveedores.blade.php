@@ -88,11 +88,11 @@
                             <label class="col-md-4 col-form-label text-md-left">NIT:</label>
 
                             <div class="col-md-8">
-                                <input  id="NIT" class="form-control @error('NIT') is-invalid @enderror" value="{{old('NIT')}}" name="NIT" required autocomplete>
+                                <input id="NIT" class="form-control @error('NIT') is-invalid @enderror" value="{{old('NIT')}}" name="NIT" required autocomplete>
                                 @error('NIT')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -120,7 +120,7 @@
 
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarProveedor()" />
+                            <input id = "registrar" type="button" value="Registrar" class="btn btn-primary" onclick= "registrarProveedor()" />
 
                             <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarProveedor()" />
 
@@ -163,6 +163,7 @@
                                             document.getElementById('direccion').value = "";
                                             document.getElementById('NIT').value = "";
                                             document.getElementById('descripcion').value = "";
+                                            document.getElementById('registrar').disabled = false;
 
                                         }
 
@@ -214,6 +215,7 @@
                                                     <script type="text/javascript">
                                                       
                                                         var cambiar = function(){
+                                                            document.getElementById('registrar').disabled = true;
                                                             document.getElementById('id').value = {!!json_encode($registro->Id)!!};
                                                             document.getElementById('nombre').value = {!!json_encode($registro->Nombre)!!};
                                                             document.getElementById('email').value = {!!json_encode($registro->Email)!!};
@@ -221,6 +223,7 @@
                                                             document.getElementById('direccion').value = {!!json_encode($registro->Direccion)!!};
                                                             document.getElementById('NIT').value = {!!json_encode($registro->NIT)!!};
                                                             document.getElementById('descripcion').value = {!!json_encode($registro->Descripcion)!!};
+
 
                                                         };
                                                         var input = document.getElementById({!!json_encode($registro->Id)!!});

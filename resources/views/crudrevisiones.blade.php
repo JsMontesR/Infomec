@@ -186,7 +186,7 @@
 
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarRevision()" />
+                            <input id="registrar" type="button" value="Registrar" class="btn btn-primary" onclick= "registrarRevision()" />
 
                             <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarRevision()" />
 
@@ -226,6 +226,7 @@
                                             document.getElementById('resultadosRevision').value = "";
                                             document.getElementById('notasRevision').value = "";
                                             document.getElementById('fechaGarantia').value = "";
+                                            document.getElementById('registrar').disabled = false;
                                         }
 
                             </script>
@@ -275,11 +276,13 @@
                                                                     <script type="text/javascript">
                                                                       
                                                                         var cambiar = function(){
-
+                                                                            document.getElementById('registrar').disabled = true;
                                                                             document.getElementById('id').value = {!!json_encode($revision->Id)!!};
                                                                             document.getElementById('resultadosRevision').value = {!!json_encode($revision->Resultados)!!};
                                                                             document.getElementById('notasRevision').value = {!!json_encode($revision->Notas)!!};
                                                                             document.getElementById('fechaGarantia').value = {!!json_encode($revision->FechaGarantia)!!};
+
+                                                                            document.getElementById('registrar').disabled = true;
                                                                             
                                                                         };
                                                                         var input = document.getElementById({!!json_encode($revision->Id)!!}+"r");

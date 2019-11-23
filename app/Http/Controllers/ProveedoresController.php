@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Proveedor;
 use DB;
+use Validator;
+use Illuminate\Validation\ValidationException;
 
 class ProveedoresController extends Controller
 {
@@ -52,17 +54,26 @@ class ProveedoresController extends Controller
         $request->validate($this->validationRules);
 
         $proveedor = new Proveedor;
-        $proveedor->id = $request->id;
         $proveedor->nombre = $request->nombre;
         $proveedor->email = $request->email;
         $proveedor->telefono = $request->telefono;
         $proveedor->direccion = $request->direccion;
-        $proveedor->NIT = $request->NIT;
+        $this->validarYGuardarNIT($request,$proveedor);
         $proveedor->descripcion = $request->descripcion;
 
         $proveedor->save();
 
         return back()->with('success', 'Proveedor registrado');
+    }
+
+    public function validarYGuardarNIT(Request $request, Proveedor $proveedor){
+        $NITvalidator = Validator::make($request->all(), ['NIT' => 'nullable|regex:/(?<![\w\d])[0-9]+-[0-9]+(?![\w\d])/']);
+        
+        if ($NITvalidator->fails()) {
+            throw ValidationException::withMessages(['NIT' => 'El NIT ingresado es incorrecto',]);
+        }else{       
+            $proveedor->NIT = $request->NIT;
+        }
     }
 
     /**
@@ -82,7 +93,7 @@ class ProveedoresController extends Controller
         $proveedor->email = $request->email;
         $proveedor->telefono = $request->telefono;
         $proveedor->direccion = $request->direccion;
-        $proveedor->NIT = $request->NIT;
+        $this->validarYGuardarNIT($request,$proveedor);
         $proveedor->descripcion = $request->descripcion;
 
         $proveedor->save();

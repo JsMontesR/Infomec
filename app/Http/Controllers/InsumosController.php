@@ -68,7 +68,6 @@ class InsumosController extends Controller
         $request->validate($this->validationRules);
 
         $insumo = new Insumo;
-        $insumo->id = $request->id;
         $insumo->nombre = $request->nombre;
         $insumo->proveedor_id = $request->id_del_proveedor;
         $insumo->precioCompra = $request->precio_de_compra;

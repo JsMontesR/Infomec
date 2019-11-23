@@ -16,10 +16,10 @@ class CreateInsumosTable extends Migration
         Schema::create('insumos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->bigInteger('precioCompra');
-            $table->bigInteger('utilidad');
-            $table->bigInteger('cantidad');
-            $table->double('precioVenta');
+            $table->unsignedBigInteger('precioCompra');
+            $table->unsignedBigInteger('utilidad');
+            $table->unsignedBigInteger('cantidad');
+            $table->unsignedBigInteger('precioVenta');
             $table->timestamps();
         });
     }

@@ -233,7 +233,7 @@
 
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarInsumo()" />
+                            <input id="registrar" type="button" value="Registrar" class="btn btn-primary" onclick= "registrarInsumo()" />
 
                             <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarInsumo()" />
 
@@ -277,6 +277,7 @@
                                             document.getElementById('cantidad').value = "";
                                             document.getElementById('utilidad').value = "";
                                             document.getElementById('precioVenta').value = "";
+                                            document.getElementById('registrar').disabled = false;
                                         }
 
                             </script>
@@ -323,6 +324,7 @@
                                                     <script type="text/javascript">
 
                                                         var cambiar = function(){
+                                                            document.getElementById('registrar').disabled = true;
                                                             document.getElementById('id').value = {!!json_encode($registro->Id)!!};
                                                             document.getElementById('nombre').value = {!!json_encode($registro->Nombre)!!};
                                                             document.getElementById('proveedor_id').value = {!!json_encode($registro->Proveedor)!!};

@@ -191,7 +191,7 @@
 
                             <br>
                             <div class="btn-group col-md">
-                            <input type="button" value="Registrar" class="btn btn-primary" onclick= "registrarEquipo()" />
+                            <input id="registrar" type="button" value="Registrar" class="btn btn-primary" onclick= "registrarEquipo()" />
 
                             <input type="button" value="Modificar" class="btn btn-warning" onclick= "modificarEquipo()" />
 
@@ -232,6 +232,7 @@
                                             document.getElementById('numeroSerie').value = "";
                                             document.getElementById('claveIngreso').value = "";
                                             document.getElementById('user_email').value = "";
+                                            document.getElementById('registrar').disabled = false;
 
                                         }
 
@@ -279,6 +280,7 @@
                                                                 <script type="text/javascript">
                                                                   
                                                                     var cambiar = function(){
+                                                                        document.getElementById('registrar').disabled = true;
                                                                         document.getElementById('id').value = {!!json_encode($registro->Id)!!};
                                                                         document.getElementById('marca').value = {!!json_encode($registro->Marca)!!};
                                                                         document.getElementById('numeroSerie').value = {!!json_encode($registro->Serial)!!};

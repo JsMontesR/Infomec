@@ -65,7 +65,12 @@ class RevisionesController extends Controller
         $request->validate($this->validationRules);
 
         $revision = new Revision;
-        $revision->id = $request->id;
+       
+        if(is_null(Revision::find($request->id))){
+             $revision->id = $request->id;
+         }else{
+            throw ValidationException::withMessages(['id' => 'La orden de servicio con el id ingresado ya tiene una revisión asociada.']);
+         }
         $revision->resultadosRevision = $request->resultados_de_revision;
         $revision->notasRevision = $request->notasRevision;
         $revision->fechaGarantia = $request->fecha_de_garantia;
