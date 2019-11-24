@@ -64,6 +64,11 @@ class UsuariosController extends Controller
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;
         $this->validarYGuardarNIT($request,$usuario);
+        if($request->password != null){
+            $usuario->password = Hash::make($request->password);
+        }else{
+            throw ValidationException::withMessages(['password' => 'La contraseña es obligatoria',]);
+        }
         $usuario->rol = $request->rol;
         $usuario->save();
 

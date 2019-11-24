@@ -175,7 +175,7 @@
                                 }
 
                                 function eliminarUsuario(){
-                                    var opcion = confirm("¿Está seguro que desea eliminar el insumo seleccionado?");
+                                    var opcion = confirm("¿Está seguro que desea eliminar la persona seleccionada?");
                                     if(opcion){
                                         var valor = document.getElementById('id').value;
                                         document.form1.action = '{{ route('usuarios.delete') }}';    
