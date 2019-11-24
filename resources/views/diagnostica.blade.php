@@ -43,7 +43,7 @@
 								@if($problemas->tipodato === 'yesno')
 									<label><input type="checkbox" name={{$problemas->nombre}} > {{ $problemas->descripcion }} </label><br>
 								@else
-									<label >{{$problemas->descripcion}} <input type="text"  name= {{ $problemas->nombre }}> </label><br>
+									<label >{{$problemas->descripcion}} <input type="number" min="0" name= {{ $problemas->nombre }}> </label><br>
 								@endif
 								
 								@endforeach

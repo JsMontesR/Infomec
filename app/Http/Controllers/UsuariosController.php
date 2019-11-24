@@ -15,12 +15,12 @@ class UsuariosController extends Controller
     public $validationRules = [
             'name' => 'required',
             'email' => 'required|email',
-            'cedula' => 'nullable|integer',
-            'telefono' => 'nullable|integer',
+            'cedula' => 'nullable|integer|min:0',
+            'telefono' => 'nullable|integer|min:0',
             'password' => 'nullable|string|min:8',
         ];
 
-    public $validationIdRule = ['id' => 'required|integer'];
+    public $validationIdRule = ['id' => 'required|integer|min:0'];
 
 
     /**

@@ -14,11 +14,11 @@ class ProveedoresController extends Controller
     public $validationRules = [
             'nombre' => 'required',
             'email' => 'nullable|email',
-            'telefono' => 'nullable|integer',
+            'telefono' => 'nullable|integer|min:0',
             'NIT' => 'nullable',
         ];
 
-    public $validationIdRule = ['id' => 'required|integer'];
+    public $validationIdRule = ['id' => 'required|integer|min:0'];
 
     /**
      * Display a listing of the resource.

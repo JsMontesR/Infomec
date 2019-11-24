@@ -11,14 +11,14 @@ class InsumosController extends Controller
 
     public $validationRules = [
             'nombre' => 'required',
-            'precio_de_compra' => 'required|integer',
-            'utilidad' => 'required|integer',
-            'cantidad' => 'required|integer',
-            'precio_de_venta' => 'required|numeric',
+            'precio_de_compra' => 'required|integer|min:0',
+            'utilidad' => 'required|integer|min:0',
+            'cantidad' => 'required|integer|min:0',
+            'precio_de_venta' => 'required|numeric|min:0',
             'id_del_proveedor' => 'required|numeric',
         ];
 
-    public $validationIdRule = ['id' => 'required|integer'];
+    public $validationIdRule = ['id' => 'required|integer|min:0'];
 
     /**
      * Display a listing of the resource.

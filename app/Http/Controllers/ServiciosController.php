@@ -11,10 +11,10 @@ class ServiciosController extends Controller
 
     public $validationRules = [
             'problema_reportado' => 'required',
-            'id_del_equipo' => 'required|integer',
+            'id_del_equipo' => 'required|integer|min:0',
         ];
 
-    public $validationIdRule = ['id' => 'required|integer'];
+    public $validationIdRule = ['id' => 'required|integer|min:0'];
 
     /**
      * Display a listing of the resource.

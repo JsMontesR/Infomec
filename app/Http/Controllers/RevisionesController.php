@@ -15,7 +15,7 @@ class RevisionesController extends Controller
             'fecha_de_garantia' => 'nullable|after_or_equal:today'
         ];
 
-    public $validationIdRule = ['id' => 'required|integer'];
+    public $validationIdRule = ['id' => 'required|integer|min:0'];
 
     /**
      * Display a listing of the resource.

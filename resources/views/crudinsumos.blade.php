@@ -75,7 +75,7 @@
                             <label class="col-md-4 col-form-label text-md-left">Cantidad en stock:</label>
 
                             <div class="col-md-8">
-                                <input  id="cantidad" class="form-control @error('cantidad') is-invalid @enderror" name="cantidad" required autocomplete value="{{old('cantidad')}}">
+                                <input  id="cantidad" type="number" min="0" class="form-control @error('cantidad') is-invalid @enderror" name="cantidad" required autocomplete value="{{old('cantidad')}}">
                                 @error('cantidad')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
