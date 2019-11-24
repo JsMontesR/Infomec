@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+@if(session()->has('success'))
+
+    <div align="center" class="alert alert-info" role="alert">{{session('success')}}</div>
+
+    <div align="center" class="alert alert-warning">
+    	Nota: El sistema de predicciones arroja resultados meramente tentativos, no son completamente fiables y no reemplazan el criterio de un profesional especializado en el área.
+    </div>  
+    <br>
+
+@endif
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md">
@@ -25,14 +38,7 @@
 		                    <script type="text/javascript"></script>
 
 
-		                    
-		                    @if(session()->has('predict'))
-		                    <div align="center">
-		                    	<h3 class="row justify-content-center">{{session('predict')}}</h3>
-		                    	<label class="row justify-content-center">Nota: El sistema de predicciones arroja resultados meramente tentativos, no son completamente fiables y no reemplazan el criterio de un profesional especializado en el área.</label>
-		                    </div>  
-		                    <br>
-  							@endif
+		                 
 
 
 		                    
@@ -41,9 +47,46 @@
 							
 								@foreach($diagnostica as $problemas)
 								@if($problemas->tipodato === 'yesno')
-									<label><input type="checkbox" name={{$problemas->nombre}} > {{ $problemas->descripcion }} </label><br>
+								<div class="form-group row">
+		                            <label class="col-md-4 col-form-label text-md-left">{{$problemas->descripcion}}</label>
+		                            <div class="col-md-8">
+		                                <input class="form-control" type="checkbox" @error($problemas->nombre) is-invalid @enderror name="{{$problemas->nombre}}" autocomplete="{{$problemas->nombre}}" value="{{old($problemas->nombre)}}">
+		                                @error($problemas->nombre)
+		                                    <span class="invalid-feedback" role="alert">
+		                                        <strong>{{ $message }}</strong>
+		                                    </span>
+		                                @enderror
+		                            </div>
+		                        </div>
 								@else
-									<label >{{$problemas->descripcion}} <input type="number" min="0" name= {{ $problemas->nombre }}> </label><br>
+
+								@if($problemas->nombre === 'aniocompra')
+								<div class="form-group row">
+		                            <label class="col-md-4 col-form-label text-md-left">{{$problemas->descripcion}}</label>
+		                            <div class="col-md-8">
+		                                <input class="form-control" type="number" min="0" max="100" @error($problemas->nombre) is-invalid @enderror name="{{$problemas->nombre}}" autocomplete="{{$problemas->nombre}}" value="{{old($problemas->nombre)}}">
+		                                @error($problemas->nombre)
+		                                    <span class="invalid-feedback" role="alert">
+		                                        <strong>{{ $message }}</strong>
+		                                    </span>
+		                                @enderror
+		                            </div>
+		                        </div>
+									
+								@else
+									<div class="form-group row">
+		                            <label class="col-md-4 col-form-label text-md-left">{{$problemas->descripcion}}</label>
+		                            <div class="col-md-8">
+		                                <input class="form-control" type="number" min="0" max="24" @error($problemas->nombre) is-invalid @enderror name="{{$problemas->nombre}}" autocomplete="{{$problemas->nombre}}" value="{{old($problemas->nombre)}}">
+		                                @error($problemas->nombre)
+		                                    <span class="invalid-feedback" role="alert">
+		                                        <strong>{{ $message }}</strong>
+		                                    </span>
+		                                @enderror
+		                            </div>
+		                        </div>
+								@endif
+									
 								@endif
 								
 								@endforeach

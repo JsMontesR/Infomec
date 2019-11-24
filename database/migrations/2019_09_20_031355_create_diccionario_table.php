@@ -34,7 +34,7 @@ class CreateDiccionarioTable extends Migration
 
         Diccionario::create([
             'nombre' => 'apaga',
-            'descripcion' => '¿Al cuanto tiempo de encendido se apaga su equipo? (si no se apaga no ingrese ningún valor)',
+            'descripcion' => '¿En cuantas horas despues de encendido se apaga su equipo? (si no se apaga no ingrese ningún valor)',
             'tipodato' => 'open',
             'defect' => 'n',
         ]);

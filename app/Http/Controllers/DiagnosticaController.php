@@ -14,6 +14,12 @@ use DB;
 class DiagnosticaController extends Controller
 {
 
+     public $validationRules = [
+            'apaga' => 'nullable|integer|min:0|max:24',
+            'aniocompra' => 'nullable|integer|min:0|max:100',
+            'horasdia' => 'nullable|integer|min:0|max:24'
+        ];
+
     /**
      * Display a listing of the resource.
      *
@@ -43,6 +49,10 @@ class DiagnosticaController extends Controller
      */
     public function predict(Request $request)
     {
+
+        $request->validate($this->validationRules);
+
+
         $samplesdb = DB::table('repodiagnosticos')->get()->toArray();
 
         $labelshard = DB::table('repodiagnosticos')->get('fallahard')->toArray();
@@ -118,8 +128,8 @@ class DiagnosticaController extends Controller
         $this->recordPrediction($sampleoriginal,$prediction1[1],$prediction2[1]);
 
 
-        session()->flash('predict', $respuesta);
-        return redirect()->back();
+        return back()->with('success', $respuesta);
+        
     }
 
     /**
