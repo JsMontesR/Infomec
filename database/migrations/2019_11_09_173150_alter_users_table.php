@@ -26,7 +26,6 @@ class AlterUsersTable extends Migration
         $user->email = 'admin@admin.com';
         $user->rol = 'administrador';
         $user->password = Hash::make('1234');
-
         $user->save();
     }
 
