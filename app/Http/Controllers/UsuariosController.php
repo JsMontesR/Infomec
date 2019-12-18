@@ -14,10 +14,10 @@ class UsuariosController extends Controller
 
     public $validationRules = [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required_if:rol,administrador|nullable|email',
             'cedula' => 'nullable|integer|min:0',
             'telefono' => 'nullable|integer|min:0',
-            'password' => 'nullable|string|min:8',
+            'password' => 'required_with:email|required_if:rol,administrador|nullable|min:8',
         ];
 
     public $validationIdRule = ['id' => 'required|integer|min:0'];
@@ -66,8 +66,6 @@ class UsuariosController extends Controller
         $this->validarYGuardarNIT($request,$usuario);
         if($request->password != null){
             $usuario->password = Hash::make($request->password);
-        }else{
-            throw ValidationException::withMessages(['password' => 'La contraseña es obligatoria',]);
         }
         $usuario->rol = $request->rol;
         $usuario->save();
