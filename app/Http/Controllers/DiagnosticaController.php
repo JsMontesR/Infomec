@@ -127,7 +127,6 @@ class DiagnosticaController extends Controller
 
         $this->recordPrediction($sampleoriginal,$prediction1[1],$prediction2[1]);
 
-
         return back()->with('success', $respuesta);
         
     }
