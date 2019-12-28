@@ -216,6 +216,10 @@
                                             document.getElementById('registrar').disabled = false;
                                         }
 
+                                function imprimirOrdenDeServicio(){
+                                    document.form2.action = '{{ route('servicios.pdf') }}';    
+                                }
+
                             </script>
 
                         </form>

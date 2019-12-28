@@ -17,7 +17,7 @@ class UsuariosController extends Controller
             'email' => 'required_if:rol,administrador|nullable|email',
             'cedula' => 'nullable|integer|min:0',
             'telefono' => 'nullable|integer|min:0',
-            'password' => 'required_with:email|required_if:rol,administrador|nullable|min:8',
+            'password' => 'required_if:rol,administrador|nullable|min:8',
         ];
 
     public $validationIdRule = ['id' => 'required|integer|min:0'];
@@ -60,6 +60,9 @@ class UsuariosController extends Controller
         $usuario = new User;
         $usuario->name = $request->name;
         $usuario->email = $request->email;
+        if($request->email != null && User::where('email', '=' ,$request->email) != null){
+            throw ValidationException::withMessages(['email' => 'El email ingresado ya existe',]);
+        }
         $usuario->cedula = $request->cedula;
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +52,9 @@ Route::post('/registrarOrdenesServicio','ServiciosController@store')->name('serv
 Route::post('/borrarOrdenesServicio','ServiciosController@destroy')->name('servicios.delete')->middleware('auth')->middleware('notclient');
 
 Route::post('/actualizarOrdenesServicio','ServiciosController@update')->name('servicios.update')->middleware('auth')->middleware('notclient');
+
+Route::post('/imprimirServicio','ServiciosController@update')->name('servicios.pdf')->middleware('auth')->middleware('notclient');
+
 
 ////CRUD Revisiones
 

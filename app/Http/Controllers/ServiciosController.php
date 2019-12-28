@@ -106,4 +106,8 @@ class ServiciosController extends Controller
         Servicio::findOrFail($request->id)->delete();
         return redirect()->route('servicios')->with('success', 'Orden de servicio eliminada');
     }
+
+    public function imprimirServicio(){
+        
+    }
 }
