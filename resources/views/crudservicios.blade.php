@@ -184,6 +184,9 @@
                             
                             <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarServicio()" />
                             </div>
+
+                            
+                            <input type="button" value="Descargar" class="btn btn-info" onclick= "imprimirOrdenDeServicio()" />
                              <script type="text/javascript">
                                 
                                 function registrarServicio(){
@@ -217,7 +220,8 @@
                                         }
 
                                 function imprimirOrdenDeServicio(){
-                                    document.form2.action = '{{ route('servicios.pdf') }}';    
+                                    document.form2.action = '{{ route('servicios.pdf') }}';   
+                                    document.form2.submit(); 
                                 }
 
                             </script>

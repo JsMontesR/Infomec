@@ -59,10 +59,10 @@ class UsuariosController extends Controller
 
         $usuario = new User;
         $usuario->name = $request->name;
-        $usuario->email = $request->email;
-        if($request->email != null && User::where('email', '=' ,$request->email) != null){
+        if($request->email != null && DB::table('users')->where('email', '=', $request->email)->exists()){
             throw ValidationException::withMessages(['email' => 'El email ingresado ya existe',]);
         }
+        $usuario->email = $request->email;
         $usuario->cedula = $request->cedula;
         $usuario->telefono = $request->telefono;
         $usuario->direccion = $request->direccion;

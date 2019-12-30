@@ -8,18 +8,22 @@
 
 <link href="{{asset('css/styles.css')}}" rel="stylesheet">
 
-<h1 align="center">{{$nombrereporte}}</h1>
+<h1 align="center">{{$nombre}}</h1>
 <br>
 
 <div class="card mb-3">
       <div class="card-body">
         <div class="table-responsive">
-          
+          <h3 align="center">{{$cliente}}</h3>
+          <h3 align="center">{{$fecha}}</h3>
+          <h3 align="center">{{$telefono}}</h3>
+          <h3 align="center">{{$equipo}}</h3>
+          <h3 align="center">{{$problema}}</h3>
+          <h3 align="center">{{$notas}}</h3>
     </div>
   </div>
 </div>    
- <h5 align="center">Fecha y hora actual del reporte {{(new DateTime())->format('d/m/y')}}</h5>
- <br>
+
 
 
 

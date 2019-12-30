@@ -38,7 +38,7 @@ Route::get('/ordenesServicio','ServiciosController@index')->name('servicios')->m
 Route::post('/registrarOrdenesServicio','ServiciosController@store')->name('servicios.store')->middleware('auth')->middleware('notclient');
 Route::post('/borrarOrdenesServicio','ServiciosController@destroy')->name('servicios.delete')->middleware('auth')->middleware('notclient');
 Route::post('/actualizarOrdenesServicio','ServiciosController@update')->name('servicios.update')->middleware('auth')->middleware('notclient');
-Route::post('/imprimirServicio','ServiciosController@update')->name('servicios.pdf')->middleware('auth')->middleware('notclient');
+Route::post('/imprimirServicio','ServiciosController@print')->name('servicios.pdf')->middleware('auth')->middleware('notclient');
 
 ////CRUD Revisiones
 
