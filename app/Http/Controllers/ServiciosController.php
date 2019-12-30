@@ -93,12 +93,10 @@ class ServiciosController extends Controller
     public function print(Request $request){
         $nombre = "Orden de servicio";
         $equipo = Equipo::find($request->equipo_id);
-        $cliente = Users::find($equipo->users_email);
-        $fecha = Servicios::find
-        $telefono
-        
-        $problema
-        $notas
+        $cliente = DB::table('users')->select('nombre')->where('email', '=', $equipo->user_email )->get();
+        $fecha = Servicios::find($request->id);
+        $problema = $request->problema;
+        $notas = $request->notas;
         
         $pdf = \PDF::loadView('pdf.servicio',compact('nombre'));
         return $pdf->stream('servicio.pdf');

@@ -14,7 +14,7 @@
 <div class="card mb-3">
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered" id="example" width="100%" cellspacing="0">
+          <table class="table table-bordered" data-name="my_table" width="100%" cellspacing="0">
             @if(!$registros->isEmpty())
                     <thead>
                       <tr>
