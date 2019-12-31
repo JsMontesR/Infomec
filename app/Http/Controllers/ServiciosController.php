@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Servicio;
+use App\Equipo;
+use App\User;
+
 class ServiciosController extends Controller
 {
     public $validationRules = [
@@ -26,7 +29,7 @@ class ServiciosController extends Controller
             DB::raw('users.email as "Email"'),
             DB::raw('equipos.created_at as "Fecha de creación"'),
             DB::raw('equipos.updated_at as "Fecha de actualización"'))
-         ->join('users','users.email','=','equipos.user_email')
+         ->join('users','users.id','=','equipos.user_id')
             ->get();
         $servicios = DB::table('servicios')->select(
             DB::raw('servicios.id as Id'),
@@ -38,7 +41,7 @@ class ServiciosController extends Controller
             DB::raw('users.name as "Nombre cliente"'),
             DB::raw('users.email as "Correo electrónico cliente"'))
         ->join('equipos','equipos.id','=','servicios.equipo_id')
-        ->join('users','users.email','=','equipos.user_email')
+        ->join('users','users.id','=','equipos.user_id')
             ->get();
         return view('crudservicios',compact('equipos','servicios'));
     }
@@ -92,13 +95,22 @@ class ServiciosController extends Controller
 
     public function print(Request $request){
         $nombre = "Orden de servicio";
-        $equipo = Equipo::find($request->equipo_id);
-        $cliente = DB::table('users')->select('nombre')->where('email', '=', $equipo->user_email )->get();
-        $fecha = Servicios::find($request->id);
-        $problema = $request->problema;
-        $notas = $request->notas;
+        $equipoObj = Equipo::find($request->id_del_equipo);
+        $cliente = User::find($equipoObj->user_id)->name;
+        $fecha = Servicio::find($request->id)->created_at;
+        $problema = $request->problema_reportado;
+        if($request->notas != null){
+            $notas = $request->notas;
+        }else{
+            $notas = null;
+        }  
+        $equipo = "Orden de servicio válida para equipo con identificación " . $equipoObj->id . " marca " . $equipoObj->marca;
+        if($equipoObj->serial != null){
+            $equipo = $equipo . " con serial " . $equipoObj->serial;
+        }
+
         
-        $pdf = \PDF::loadView('pdf.servicio',compact('nombre'));
+        $pdf = \PDF::loadView('pdf.servicio',compact('nombre','cliente','fecha','problema','notas','equipo'));
         return $pdf->stream('servicio.pdf');
     }
 }

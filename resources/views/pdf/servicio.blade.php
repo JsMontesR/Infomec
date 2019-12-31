@@ -14,12 +14,18 @@
 <div class="card mb-3">
       <div class="card-body">
         <div class="table-responsive">
-          <h3 align="center">{{$cliente}}</h3>
-          <h3 align="center">{{$fecha}}</h3>
-          <h3 align="center">{{$telefono}}</h3>
-          <h3 align="center">{{$equipo}}</h3>
-          <h3 align="center">{{$problema}}</h3>
-          <h3 align="center">{{$notas}}</h3>
+          <h4 align="center">Cliente: {{$cliente}}</h4>
+          <br>
+          <h4 align="center">{{$equipo}}</h4>
+          <br>
+          <h4 align="center">Problema reportado: {{$problema}}</h4>
+          <br>
+          @if($notas != null)
+          <h4 align="center">Notas: {{$notas}}</h4>
+          <br>
+          @endif
+          <h4 align="center">Fecha: {{$fecha}}</h4>
+          <br>
     </div>
   </div>
 </div>    

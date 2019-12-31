@@ -44,7 +44,7 @@ class RevisionesController extends Controller
             DB::raw('users.name as "Nombre cliente"'),
             DB::raw('users.email as "Correo electrónico cliente"'))
         ->join('equipos','equipos.id','=','servicios.equipo_id')
-        ->join('users','users.email','=','equipos.user_email')
+        ->join('users','users.id','=','equipos.user_id')
         ->leftJoin('revisiones','revisiones.id','=','servicios.id')
         ->whereNull('revisiones.id')
             ->get();

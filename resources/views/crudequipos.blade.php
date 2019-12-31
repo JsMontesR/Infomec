@@ -75,8 +75,8 @@
                             <label class="col-md-4 col-form-label text-md-left">Propietario:</label>
 
                             <div class="col-md-8">
-                                <input readonly="readonly" id="user_email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="user_email" value="{{old('email')}}" autofocus>
-                                @error('email')
+                                <input readonly="readonly" id="user_id" class="form-control @error('user_id') is-invalid @enderror" name="user_id" required autocomplete="user_id" value="{{old('user_id')}}" autofocus>
+                                @error('user_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -104,13 +104,13 @@
                                                                 
                                                                @foreach($usuarios as $registro)
                                                                 <tr>
-                                                                    <td align="center"><a id="{{$registro->Email}}" class="btn btn-secondary text-white"><em class="fas fa-angle-up"></em> Cargar</a></td>
+                                                                    <td align="center"><a id="{{$registro->Id}}" class="btn btn-secondary text-white"><em class="fas fa-angle-up"></em> Cargar</a></td>
                                                                 <script type="text/javascript">
                                                                   
                                                                     var cambiar = function(){
-                                                                        document.getElementById('user_email').value = {!!json_encode($registro->Email)!!};
+                                                                        document.getElementById('user_id').value = {!!json_encode($registro->Id)!!};
                                                                     };
-                                                                    var input = document.getElementById({!!json_encode($registro->Email)!!});
+                                                                    var input = document.getElementById({!!json_encode($registro->Id)!!});
                                                                     input.addEventListener('click',cambiar);
                                                                     
                                                                 </script>
@@ -191,7 +191,7 @@
                                             document.getElementById('marca').value = "";
                                             document.getElementById('numeroSerie').value = "";
                                             document.getElementById('claveIngreso').value = "";
-                                            document.getElementById('user_email').value = "";
+                                            document.getElementById('user_id').value = "";
                                             document.getElementById('registrar').disabled = false;
 
                                         }
@@ -237,20 +237,20 @@
                                                         <tbody>
                                                            @foreach($registros as $registro)
                                                             <tr>
-                                                                <td align="center"><a id="{{$registro->Id}}" class="btn btn-secondary text-white" href="#page-top"><em class="fas fa-angle-up"></em> Ver</a></td>
+                                                                <td align="center"><a id="{{$registro->Id}}e" class="btn btn-secondary text-white" href="#page-top"><em class="fas fa-angle-up"></em> Ver</a></td>
                                                                 <script type="text/javascript">
                                                                   
-                                                                    var cambiar = function(){
+                                                                    var cambiar2 = function(){
                                                                         document.getElementById('registrar').disabled = true;
                                                                         document.getElementById('id').value = {!!json_encode($registro->Id)!!};
                                                                         document.getElementById('marca').value = {!!json_encode($registro->Marca)!!};
                                                                         document.getElementById('numeroSerie').value = {!!json_encode($registro->Serial)!!};
                                                                         document.getElementById('claveIngreso').value = {!!json_encode($registro->Clave)!!};
-                                                                        document.getElementById('user_email').value = {!!json_encode($registro->Email)!!};
+                                                                        document.getElementById('user_id').value = {!!json_encode($registro->{'Id propietario'})!!};
 
                                                                     };
-                                                                    var input = document.getElementById({!!json_encode($registro->Id)!!});
-                                                                    input.addEventListener('click',cambiar);
+                                                                    var input = document.getElementById({!!json_encode($registro->Id)!!}+"e");
+                                                                    input.addEventListener('click',cambiar2);
                                                                     
                                                                 </script>
                                                                 @foreach ($registros[0] as $key => $value) 

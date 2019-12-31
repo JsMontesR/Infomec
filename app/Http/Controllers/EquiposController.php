@@ -13,9 +13,8 @@ class EquiposController extends Controller
 {
 
     public $validationRules = [
-            'email' => 'required|email',
+            'user_id' => 'required',
             'marca' => 'required',
-            'numeroSerie' => 'required'
         ];
 
     public $validationIdRule = ['id' => 'required|integer'];
@@ -32,14 +31,14 @@ class EquiposController extends Controller
             DB::raw('equipos.marca as "Marca"'),
             DB::raw('equipos.numeroSerie as "Serial"'),
             DB::raw('equipos.claveIngreso as "Clave"'),
-            DB::raw('users.email as "Email"'),
+            DB::raw('users.id as "Id propietario"'),
             DB::raw('users.name as "Propietario"'),
              DB::raw('equipos.created_at as "Fecha de creación"'),
             DB::raw('equipos.updated_at as "Fecha de actualización"')
-        )->join('users','users.email','=','equipos.user_email')
+        )->join('users','users.id','=','equipos.user_id')
             ->get();
 
-        $usuarios = DB::table('users')->select(DB::raw('id as Id'),DB::raw('email as "Email"'),DB::raw('name as "Nombre"'))->get();
+        $usuarios = DB::table('users')->select(DB::raw('id as Id'),DB::raw('name as "Nombre"'),DB::raw('cedula as "Cedula"'),DB::raw('email as "Email"'))->get();
         return view('crudequipos',compact('registros','usuarios'));
     }
 
@@ -57,7 +56,7 @@ class EquiposController extends Controller
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
         $equipo->claveIngreso = $request->claveIngreso;
-        $equipo->user_email = $request->email;
+        $equipo->user_id = $request->user_id;
         $equipo->save();
 
         return redirect()->route('equipos')->with('success', 'Equipo registrado');
@@ -80,7 +79,7 @@ class EquiposController extends Controller
         $equipo->marca = $request->marca;
         $equipo->numeroSerie = $request->numeroSerie;
         $equipo->claveIngreso = $request->claveIngreso;
-        $equipo->user_email = $request->email;
+        $equipo->user_id = $request->user_id;
         $equipo->save();
 
         return back()->with('success', 'Equipo actualizado');

@@ -146,14 +146,16 @@
                             <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarServicio()" />
                             </div>
 
-                            
-                            <input type="button" value="Descargar" class="btn btn-info" onclick= "imprimirOrdenDeServicio()" />
+                            <div class="btn-group col-md">
+                            <input id="descargar" disabled="true" type="button" value="Descargar" class="btn btn-info" onclick= "imprimirOrdenDeServicio()" />
+                            </div>
                              <script type="text/javascript">
                                 
                                 function registrarServicio(){
 
                                     document.form2.action = '{{ route('servicios.store') }}';
                                     document.form2.submit();
+                                    document.getElementById('descargar').disabled = false;
                                 }
 
                                 function modificarServicio(){
@@ -178,6 +180,7 @@
                                             document.getElementById('notas').value = "";
                                             document.getElementById('equipo_id').value = "";
                                             document.getElementById('registrar').disabled = false;
+                                            document.getElementById('descargar').disabled = true;
                                         }
 
                                 function imprimirOrdenDeServicio(){
@@ -239,6 +242,7 @@
                                                         document.getElementById('problemas').value = {!!json_encode($servicio->Problemas)!!};
                                                         document.getElementById('notas').value = {!!json_encode($servicio->Notas)!!};
                                                         document.getElementById('equipo_id').value = {!!json_encode($servicio->IdEquipo)!!};
+                                                        document.getElementById('descargar').disabled = false;
                                                         
                                                     };
                                                     var input = document.getElementById({!!json_encode($servicio->Id)!!});
