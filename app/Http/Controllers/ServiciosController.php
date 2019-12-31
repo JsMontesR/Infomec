@@ -94,7 +94,7 @@ class ServiciosController extends Controller
     }
 
     public function print(Request $request){
-        $nombre = "Orden de servicio";
+        $nombre = "Orden de servicio nº " . $request->id ;
         $equipoObj = Equipo::find($request->id_del_equipo);
         $cliente = User::find($equipoObj->user_id)->name;
         $fecha = Servicio::find($request->id)->created_at;

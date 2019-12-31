@@ -8,6 +8,9 @@
 
 <link href="{{asset('css/styles.css')}}" rel="stylesheet">
 
+<div align="center">
+    <img src="favicon.png" class="img-fluid" alt="Responsive image">
+</div>
 <h1 align="center">{{$nombre}}</h1>
 <br>
 
