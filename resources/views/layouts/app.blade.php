@@ -29,50 +29,25 @@
 <body id="page-top">
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    
-    
 
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-        <div class="sidebar-brand-icon">
-          <img src="favicon.png" class="img-fluid" alt="Responsive image" width="40" height="40">
-        </div>
-        <div class="sidebar-brand-text" style="color: aliceblue;">Infomec</div>
-      </a>
-    
-      <!-- Navbar -->
-    <ul class="navbar-nav ml-auto">
+    <a class="navbar-brand mr-1" href="{{route('home')}}">Infomec</a>
+
+    @auth
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      
+      <em class="fas fa-bars"></em>
+     
+    </button>
+    @endauth
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+      
 
       <!-- Authentication Links -->
         @guest
-          <nav class="navbar navbar-expand navbar-dark bg-dark static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-          
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre="">
-                            admin <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                        <a class="dropdown-item" href="http://aservi.test/register">Registrar</a>
-                                                        <a class="dropdown-item" href="http://aservi.test/logout" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                Salir
-                            </a>
-
-                            <form id="logout-form" action="http://aservi.test/logout" method="POST" style="display: none;">
-                                <input type="hidden" name="_token" value="sWT1bkYyzcogBN5isbfl6B6cTsxzZo8eG62EkCka">                            </form>
-                            
-                        </div>
-                    </li>
-                            </ul>
-        </nav>    
-        <a class="nav-link"  href="{{ route('login') }}">{{ __('Login') }}</a>
+            <li class="nav-item no-arrow mx-1 ">
+                <a class="nav-link"  href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
             @if (Route::has('register'))
             @endif
