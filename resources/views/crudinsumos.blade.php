@@ -98,16 +98,16 @@
                         </div>
 
                         <script type="text/javascript">
-                            
+
                              function calcularPrecio(){
                                 var precioCompra = parseInt(document.getElementById('precioCompra').value,10);
                                 var utilidad = parseInt(document.getElementById('utilidad').value,10);
                                 if(!isNaN(precioCompra) && !isNaN(utilidad)){
                                     document.getElementById('precioVenta').value = Math.round(precioCompra * (1 + utilidad / 100));
                                 }
-                                    
+
                             }
-                            
+
 
                         </script>
 
@@ -124,43 +124,43 @@
                             </div>
                         </div>
 
-                        
-                            <div class="card mb-3">     
+
+                            <div class="card mb-3">
                               <div class="card-body">
                                 <div class="table-responsive">
                                 @if(!$proveedores->isEmpty())
                                   <table class="table table-bordered" data-name="my_table" width="100%" cellspacing="0">
-                                    
+
                                             <thead>
                                               <tr>
                                                 <th>Seleccionar</th>
-                                                @foreach ($proveedores->get(0) as $key => $value) 
+                                                @foreach ($proveedores->get(0) as $key => $value)
                                                     @if($key !== 'Descripcion')
                                                     <th>{{$key}}</th>
                                                     @endif
                                                 @endforeach
-                                                
-                                              </tr>       
+
+                                              </tr>
                                             </thead>
                                             <tbody>
                                                @foreach($proveedores as $registro)
                                                 <tr>
                                                     <td align="center"><a id="{{$registro->Id}}" class="btn btn-secondary text-white"><em class="fas fa-angle-up"></em> Cargar</a></td>
                                                     <script type="text/javascript">
-                                                      
+
                                                         var cambiar = function(){
                                                             document.getElementById('proveedor_id').value = {!!json_encode($registro->Id)!!};
                                                         };
                                                         var input = document.getElementById({!!json_encode($registro->Id)!!});
                                                         input.addEventListener('click',cambiar);
-                                                        
+
                                                     </script>
-                                                    @foreach ($registro as $key => $value) 
+                                                    @foreach ($registro as $key => $value)
                                                         @if($key !== 'Descripcion')
                                                         <td>{{ $value }}</td>
                                                         @endif
                                                     @endforeach
-                                                    
+
                                                 </tr>
 
                                                 @endforeach
@@ -168,14 +168,14 @@
                                             <tfoot>
                                               <tr>
                                                 <th>Seleccionar</th>
-                                                @foreach ($proveedores[0] as $key => $value) 
+                                                @foreach ($proveedores[0] as $key => $value)
                                                     @if($key !== 'Descripcion')
                                                     <th>{{$key}}</th>
                                                     @endif
                                                 @endforeach
                                               </tr>
                                             </tfoot>
-                                   
+
                                   </table>
                                    @else
                                       <h3 align="center">No hay proveedores disponibles, intentelo más tarde</h3>
@@ -183,7 +183,7 @@
 
                                 </div>
                               </div>
-                                            
+
 
                         </div>
 
@@ -191,7 +191,7 @@
 
                         <div align="center">
 
-                           
+
 
                             <br>
                             <div class="btn-group col-md">
@@ -203,12 +203,12 @@
                             <br>
                             <div class="btn-group col-md">
                             <input type="button" value="Limpiar" class="btn btn-secondary" onclick= "limpiarCampos()" />
-                            
+
                             <input type="button" value="Eliminar" class="btn btn-danger" onclick= "eliminarInsumo()" />
                             </div>
                              <script type="text/javascript">
-                                
-                            
+
+
                                 function registrarInsumo(){
 
                                     document.form1.action = '{{ route('insumos.store') }}';
@@ -225,10 +225,10 @@
                                     var opcion = confirm("¿Está seguro que desea eliminar el insumo seleccionado?");
                                     if(opcion){
                                         var valor = document.getElementById('id').value;
-                                        document.form1.action = '{{ route('insumos.delete') }}';    
+                                        document.form1.action = '{{ route('insumos.delete') }}';
                                         document.form1.submit();
                                     }
-                                    
+
                                 }
 
                                 function limpiarCampos(){
@@ -250,12 +250,12 @@
                         </div>
 
                         <br>
-                    
+
                 </div>
             </div>
         </div>
 
-       
+
         <br>
 
         <div class="container">
@@ -263,22 +263,22 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header" style="font-size:20px" align="center">Insumos registrados</div>
-                            <div class="card mb-3">     
+                            <div class="card mb-3">
                               <div class="card-body">
                                 <div class="table-responsive">
-                                  
+
                                     @if(!$insumos->isEmpty())
                                         <table class="table table-bordered" data-name="my_table" width="100%" cellspacing="0">
                                             <thead>
                                               <tr>
                                                 <th>Seleccionar</th>
-                                                @foreach ($insumos->get(0) as $key => $value) 
+                                                @foreach ($insumos->get(0) as $key => $value)
                                                     @if($key !== 'Descripcion')
                                                     <th>{{$key}}</th>
                                                     @endif
                                                 @endforeach
-                                                
-                                              </tr>       
+
+                                              </tr>
                                             </thead>
                                             <tbody>
                                                @foreach($insumos as $registro)
@@ -299,16 +299,16 @@
                                                         };
                                                         var input = document.getElementById({!!json_encode($registro->Id)!!}+"p");
                                                         input.addEventListener('click',cambiar);
-                                                      
-                                                        
-                                                        
+
+
+
                                                     </script>
-                                                    @foreach ($registro as $key => $value) 
+                                                    @foreach ($registro as $key => $value)
                                                         @if($key !== 'Descripcion')
                                                         <td>{{ $value }}</td>
                                                         @endif
                                                     @endforeach
-                                                    
+
                                                 </tr>
 
                                                 @endforeach
@@ -316,32 +316,29 @@
                                             <tfoot>
                                               <tr>
                                                 <th>Seleccionar</th>
-                                                @foreach ($insumos[0] as $key => $value) 
+                                                @foreach ($insumos[0] as $key => $value)
                                                     @if($key !== 'Descripcion')
                                                     <th>{{$key}}</th>
                                                     @endif
                                                 @endforeach
-                                                
+
                                               </tr>
                                             </tfoot>
-                                    
+
                                   </table>
-                                  
+
                                   @else
                                       <h3 align="center">No hay insumos disponibles, intentelo más tarde</h3>
                                   @endif
-                                  
-                                  <script type="text/javascript" src="{{asset('js/spanishtable.js')}}"></script>
-                                  <script type="text/javascript" src="{{asset('js/spanish.js')}}"></script>
 
                                 </div>
                               </div>
-                            </div> 
+                            </div>
 
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
     </div>
 </div>

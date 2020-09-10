@@ -15,7 +15,6 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('fecha');
             $table->double('valor');
             $table->timestamps();
         });
